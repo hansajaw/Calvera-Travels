@@ -1,0 +1,566 @@
+/* =========================================== */
+/* Calvera Travels Home Page - Luxury Styling  */
+/* =========================================== */
+
+/* --- Color Palette Variables --- */
+:root {
+    --brandy-punch: #ea8f32;
+    --blue-dianne: #22404a;
+    --merino: #f6ead3;
+    --driftwood: #d67820;
+    --champagne: #ffd7a8;
+    --aztec: #0f1e24;
+    --tumbleweed: #ffb56e;
+    --golden-bell: #ea8f32;
+    --shadow-light: rgba(0, 0, 0, 0.1);
+    --shadow-dark: rgba(0, 0, 0, 0.3);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background: linear-gradient(135deg, #0f1e24 0%, #1a3238 100%);
+    color: #f6ead3;
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 40px;
+}
+
+/* =========================================== */
+/* 1. WELCOME SECTION                          */
+/* =========================================== */
+
+.welcome-section {
+    position: relative;
+    background-color: var(--blue-dianne);
+    background-image: var(--welcome-background-image);
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    padding: 100px 0;
+    color: #ffffff;
+    overflow: hidden;
+    box-shadow: 0 20px 60px var(--shadow-dark);
+}
+
+.welcome-section::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(15, 30, 36, 0.7), rgba(26, 50, 56, 0.6));
+    z-index: 1;
+    pointer-events: none;
+}
+
+.welcome-content {
+    text-align: center;
+    max-width: 1000px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 10;
+    animation: fadeInUp 1s ease;
+}
+
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(40px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.welcome-icon-wrapper {
+    display: inline-block;
+    padding: 20px;
+    border-radius: 50%;
+    margin-bottom: 30px;
+    background: rgba(234, 143, 50, 0.15);
+    backdrop-filter: blur(10px);
+    border: 2px solid rgba(234, 143, 50, 0.4);
+    box-shadow: 0 0 40px rgba(234, 143, 50, 0.4);
+    animation: pulse 3s ease-in-out infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { transform: scale(1); box-shadow: 0 0 40px rgba(234, 143, 50, 0.4); }
+    50% { transform: scale(1.05); box-shadow: 0 0 60px rgba(234, 143, 50, 0.6); }
+}
+
+.welcome-icon {
+    font-size: 3rem;
+    color: var(--golden-bell);
+    position: relative;
+}
+
+.welcome-main-title {
+    font-size: 3.5rem;
+    font-weight: 900;
+    letter-spacing: -1px;
+    margin-bottom: 16px;
+    color: #ffffff;
+    text-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
+    text-transform: uppercase;
+}
+
+.welcome-subtitle {
+    font-size: 1.4rem;
+    font-style: italic;
+    color: var(--champagne);
+    margin-bottom: 40px;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+}
+
+.welcome-description {
+    max-width: 800px;
+    margin: 0 auto 50px;
+    background: rgba(26, 50, 56, 0.7);
+    backdrop-filter: blur(20px);
+    padding: 35px;
+    border-radius: 20px;
+    border: 1px solid rgba(234, 143, 50, 0.2);
+    box-shadow: 
+        0 10px 40px rgba(0, 0, 0, 0.5),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+.welcome-description p {
+    font-size: 1.15rem;
+    line-height: 1.9;
+    color: #f6ead3;
+}
+
+.welcome-cta-center {
+    margin-top: 40px;
+}
+
+.btn-journey {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 18px 45px;
+    font-size: 1.1rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    border-radius: 12px;
+    text-decoration: none;
+    color: #0f1e24;
+    background: linear-gradient(135deg, #ea8f32, #d67820);
+    border: none;
+    box-shadow: 
+        0 8px 30px rgba(234, 143, 50, 0.5),
+        inset 0 1px 0 rgba(255, 255, 255, 0.3);
+    transition: all 0.3s ease;
+    letter-spacing: 1px;
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-journey::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    transition: left 0.5s ease;
+}
+
+.btn-journey:hover {
+    transform: translateY(-4px);
+    box-shadow: 
+        0 12px 40px rgba(234, 143, 50, 0.7),
+        inset 0 1px 0 rgba(255, 255, 255, 0.4);
+}
+
+.btn-journey:hover::before {
+    left: 100%;
+}
+
+/* =========================================== */
+/* 2. SRI LANKA SECTION                        */
+/* =========================================== */
+
+.sri-lanka-section {
+    padding: 100px 0;
+    color: #ffffff;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    position: relative;
+}
+
+.sri-lanka-section::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(15, 30, 36, 0.85), rgba(26, 50, 56, 0.8));
+    z-index: 1;
+    pointer-events: none;
+}
+
+.sri-lanka-content {
+    max-width: 1000px;
+    margin: 0 auto;
+    text-align: center;
+    position: relative;
+    z-index: 2;
+}
+
+.section-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 28px;
+    margin-bottom: 30px;
+    background: linear-gradient(135deg, rgba(234, 143, 50, 0.2), rgba(214, 120, 32, 0.2));
+    backdrop-filter: blur(10px);
+    border: 2px solid rgba(234, 143, 50, 0.4);
+    border-radius: 50px;
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--champagne);
+    box-shadow: 0 6px 20px rgba(234, 143, 50, 0.3);
+}
+
+.section-badge i {
+    color: var(--golden-bell);
+    font-size: 1.2rem;
+}
+
+.sri-lanka-content h2 {
+    font-size: 3rem;
+    font-weight: 900;
+    color: #ffffff;
+    margin-bottom: 20px;
+    text-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
+    letter-spacing: -1px;
+    text-transform: uppercase;
+}
+
+.sri-lanka-content h3 {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--tumbleweed);
+    margin: 40px 0 20px;
+    display: inline-block;
+    padding-bottom: 12px;
+    border-bottom: 3px solid var(--golden-bell);
+}
+
+.sri-lanka-content p {
+    font-size: 1.15rem;
+    line-height: 1.9;
+    color: #e2d8c6;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+/* =========================================== */
+/* 3. DISCOVER SECTION                         */
+/* =========================================== */
+
+.discover-wonders-section {
+    padding: 120px 0;
+    text-align: center;
+    color: white;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    position: relative;
+}
+
+.discover-wonders-section::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.55));
+    z-index: 1;
+    pointer-events: none;
+}
+
+.discover-wonders-content {
+    position: relative;
+    z-index: 2;
+}
+
+.discover-header {
+    margin-bottom: 30px;
+}
+
+.discover-icon {
+    font-size: 3.5rem;
+    color: var(--golden-bell);
+    margin-bottom: 20px;
+    animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-15px); }
+}
+
+.discover-wonders-content h2 {
+    font-size: 3rem;
+    font-weight: 900;
+    color: white;
+    text-shadow: 0 4px 20px rgba(0, 0, 0, 0.8);
+    margin-bottom: 30px;
+    letter-spacing: -1px;
+    text-transform: uppercase;
+}
+
+.discover-wonders-content p {
+    max-width: 900px;
+    margin: 0 auto 50px;
+    font-size: 1.2rem;
+    line-height: 1.9;
+    color: #e2d8c6;
+}
+
+.discover-wonders-section .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    background: linear-gradient(135deg, #ea8f32, #d67820);
+    border: none;
+    color: #0f1e24;
+    padding: 18px 40px;
+    border-radius: 12px;
+    font-weight: 800;
+    font-size: 1.1rem;
+    text-transform: uppercase;
+    text-decoration: none;
+    box-shadow: 
+        0 8px 30px rgba(234, 143, 50, 0.5),
+        inset 0 1px 0 rgba(255, 255, 255, 0.3);
+    transition: all 0.3s ease;
+    letter-spacing: 1px;
+}
+
+.discover-wonders-section .btn-primary:hover {
+    transform: translateY(-4px);
+    box-shadow: 
+        0 12px 40px rgba(234, 143, 50, 0.7),
+        inset 0 1px 0 rgba(255, 255, 255, 0.4);
+}
+
+/* =========================================== */
+/* 4. TOUR PACKAGES CAROUSEL - LUXURY         */
+/* =========================================== */
+
+.tour-scroll-bar {
+    padding: 40px 0 0 0;
+    background: linear-gradient(135deg, #0f1e24 0%, #1a3238 50%, #0f1e24 100%);
+    border-top: 1px solid rgba(234, 143, 50, 0.3);
+    border-bottom: none;
+    position: relative;
+    margin: 0 0 -1px 0;
+    overflow: hidden;
+    display: block;
+}
+
+/* Remove ALL gaps with adjacent sections */
+.tour-scroll-bar + * {
+    margin-top: 0 !important;
+    padding-top: 0 !important;
+}
+
+.tour-scroll-bar + section {
+    margin-top: 0 !important;
+    padding-top: 0 !important;
+}
+
+* + .tour-scroll-bar {
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+}
+
+.tour-scroll-bar::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: 
+        radial-gradient(circle at 20% 50%, rgba(234, 143, 50, 0.05) 0%, transparent 50%),
+        radial-gradient(circle at 80% 50%, rgba(234, 143, 50, 0.05) 0%, transparent 50%);
+    animation: pulse 8s ease-in-out infinite;
+}
+
+.tour-scroll-bar::after {
+    content: '';
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    width: 150px;
+    background: linear-gradient(270deg, rgba(15, 30, 36, 1), transparent);
+    pointer-events: none;
+    z-index: 2;
+}
+
+.scroll-content {
+    display: flex;
+    overflow-x: auto;
+    gap: 40px;
+    padding: 0 5%;
+    scroll-behavior: smooth;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(234, 143, 50, 0.6) rgba(255, 255, 255, 0.05);
+    position: relative;
+    z-index: 1;
+}
+
+.scroll-content::-webkit-scrollbar {
+    height: 6px;
+}
+
+.scroll-content::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 10px;
+}
+
+.scroll-content::-webkit-scrollbar-thumb {
+    background: linear-gradient(90deg, #ea8f32, #d67820);
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(234, 143, 50, 0.5);
+}
+
+.tour-card {
+    flex-shrink: 0;
+    width: 380px;
+    scroll-snap-align: center;
+    background: rgba(26, 50, 56, 0.4);
+    backdrop-filter: blur(20px);
+    border-radius: 24px;
+    overflow: hidden;
+    border: 1px solid rgba(234, 143, 50, 0.2);
+    box-shadow: 
+        0 20px 60px rgba(0, 0, 0, 0.5),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    cursor: pointer;
+}
+
+.tour-card.active {
+    transform: scale(1.05);
+    border-color: rgba(234, 143, 50, 0.6);
+    box-shadow: 
+        0 30px 80px rgba(234, 143, 50, 0.4),
+        0 0 60px rgba(234, 143, 50, 0.2);
+}
+
+.tour-card:hover {
+    transform: translateY(-16px) scale(1.02);
+    box-shadow: 
+        0 30px 80px rgba(234, 143, 50, 0.4),
+        0 0 60px rgba(234, 143, 50, 0.2);
+    border-color: rgba(234, 143, 50, 0.6);
+}
+
+.tour-card img {
+    width: 100%;
+    height: 260px;
+    object-fit: cover;
+    display: block;
+    transition: all 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+    filter: brightness(0.85) contrast(1.1);
+}
+
+.tour-card:hover img {
+    transform: scale(1.12);
+    filter: brightness(1) contrast(1.2);
+}
+
+.tour-info {
+    padding: 28px 26px 30px;
+    background: linear-gradient(180deg, rgba(15, 30, 36, 0.98) 0%, rgba(26, 50, 56, 0.95) 100%);
+}
+
+.tour-info h4 {
+    font-size: 1.6rem;
+    font-weight: 800;
+    color: #ffffff;
+    margin: 0 0 12px;
+    line-height: 1.3;
+    letter-spacing: -0.5px;
+}
+
+.tour-card:hover .tour-info h4 {
+    color: var(--tumbleweed);
+}
+
+.tour-info p {
+    font-size: 1rem;
+    color: #e2d8c6;
+    line-height: 1.7;
+    margin: 0 0 20px;
+}
+
+.price {
+    display: inline-flex;
+    background: linear-gradient(135deg, #ea8f32 0%, #d67820 100%);
+    color: #0f1e24;
+    padding: 10px 24px;
+    border-radius: 30px;
+    font-weight: 900;
+    font-size: 1.2rem;
+    letter-spacing: 0.5px;
+    box-shadow: 
+        0 6px 20px rgba(234, 143, 50, 0.5),
+        inset 0 1px 0 rgba(255, 255, 255, 0.3);
+    transition: all 0.3s ease;
+}
+
+.tour-card:hover .price {
+    transform: scale(1.05);
+    box-shadow: 
+        0 8px 28px rgba(234, 143, 50, 0.7),
+        inset 0 1px 0 rgba(255, 255, 255, 0.4);
+}
+
+/* =========================================== */
+/* 5. RESPONSIVENESS                           */
+/* =========================================== */
+
+@media (max-width: 992px) {
+    .welcome-main-title { font-size: 2.8rem; }
+    .sri-lanka-content h2 { font-size: 2.5rem; }
+    .discover-wonders-content h2 { font-size: 2.5rem; }
+    .tour-card { width: 320px; }
+}
+
+@media (max-width: 768px) {
+    .container { padding: 0 20px; }
+    
+    .welcome-section,
+    .sri-lanka-section,
+    .discover-wonders-section {
+        padding: 70px 0;
+    }
+    
+    .welcome-main-title { font-size: 2.2rem; }
+    .sri-lanka-content h2 { font-size: 2rem; }
+    .discover-wonders-content h2 { font-size: 2rem; }
+    
+    .tour-card { width: 300px; }
+    .scroll-content { padding: 0 20px; gap: 25px; }
+}
+
+@media (max-width: 480px) {
+    .welcome-main-title { font-size: 1.8rem; }
+    .welcome-subtitle { font-size: 1.1rem; }
+    .welcome-description { padding: 25px 20px; }
+    
+    .tour-card { width: 280px; }
+    .tour-info h4 { font-size: 1.4rem; }
+}

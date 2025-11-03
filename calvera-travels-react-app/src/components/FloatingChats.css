@@ -1,0 +1,39 @@
+.chat-fab {
+  position: fixed;
+  right: 24px;
+  z-index: 9999;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-size: 26px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s ease;
+}
+
+/* WhatsApp */
+.chat-whatsapp {
+  background-color: #25d366;
+  bottom: 100px;
+}
+
+.chat-whatsapp:hover {
+  transform: scale(1.1);
+  background-color: #1ebe5b;
+}
+
+/* Tawk chat */
+.chat-tawk {
+  background-color: #22404a;
+  bottom: 24px;
+}
+
+.chat-tawk:hover {
+  transform: scale(1.1);
+  background-color: #1b333d;
+}

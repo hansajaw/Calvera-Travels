@@ -1,0 +1,559 @@
+/* ========================================
+   CALVERA PREMIUM TOURS PAGE STYLING
+   ======================================== */
+
+/* === PAGE === */
+.tours-page {
+  background: linear-gradient(135deg, #22404a 0%, #1a3238 100%);
+  min-height: 100vh;
+  position: relative;
+  overflow-x: hidden;
+}
+
+/* === HIDE HEADER WHEN POPUP OPEN === */
+body.popup-active header {
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-20px);
+  transition: all 0.35s ease;
+}
+body:not(.popup-active) header {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+  transition: all 0.35s ease;
+}
+
+/* === SECTION === */
+.packages-section {
+  padding: 120px 0;
+  position: relative;
+  z-index: 2;
+}
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 40px;
+}
+
+/* === SECTION TITLE === */
+.section-title {
+  text-align: center;
+  font-size: 3.5rem;
+  font-weight: 700;
+  color: #f6ead3;
+  margin-bottom: 80px;
+  letter-spacing: -1px;
+  text-transform: uppercase;
+  position: relative;
+}
+.section-title::after {
+  content: "";
+  position: absolute;
+  bottom: -20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100px;
+  height: 4px;
+  background: linear-gradient(90deg, transparent, #ea8f32, transparent);
+  border-radius: 2px;
+}
+
+/* === GRID === */
+.packages-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  gap: 40px;
+}
+
+/* === CARD === */
+.package-card {
+  background: rgba(197, 190, 161, 0.08);
+  border-radius: 24px;
+  overflow: hidden;
+  border: 1px solid rgba(197, 190, 161, 0.15);
+  backdrop-filter: blur(10px);
+  transition: all 0.35s ease;
+  position: relative;
+}
+.package-card:hover {
+  transform: translateY(-10px);
+  border-color: rgba(234, 143, 50, 0.5);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4),
+    0 0 30px rgba(234, 143, 50, 0.2);
+}
+
+/* === IMAGE WRAPPER === */
+.image-wrapper {
+  position: relative;
+  height: 320px;
+  overflow: hidden;
+}
+.image-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.7s ease, opacity 0.5s ease;
+}
+.package-card:hover .card-image-main {
+  transform: scale(1.1);
+}
+
+/* === TAG === */
+.package-tag {
+  position: absolute;
+  top: 24px;
+  right: 24px;
+  background: linear-gradient(135deg, #ea8f32, #d67820);
+  color: #22404a;
+  padding: 10px 22px;
+  border-radius: 50px;
+  font-weight: 700;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  box-shadow: 0 8px 20px rgba(234, 143, 50, 0.4);
+}
+
+/* === INFO === */
+.package-info {
+  padding: 32px;
+}
+.package-info h3 {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #f6ead3;
+  margin-bottom: 16px;
+  transition: color 0.3s ease;
+}
+.package-card:hover .package-info h3 {
+  color: #ea8f32;
+}
+.package-info > p {
+  color: #e2d8c6;
+  line-height: 1.7;
+  margin-bottom: 20px;
+  font-size: 1rem;
+}
+.duration {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #ffb56e;
+  font-weight: 700;
+  font-size: 0.95rem;
+  margin-bottom: 24px;
+  padding: 12px 0;
+  border-top: 1px solid rgba(197, 190, 161, 0.25);
+  border-bottom: 1px solid rgba(197, 190, 161, 0.25);
+}
+
+/* === VIEW BUTTON === */
+.btn-view {
+  width: 100%;
+  padding: 16px;
+  background: linear-gradient(135deg, #ea8f32, #d67820);
+  color: #22404a;
+  border: none;
+  border-radius: 12px;
+  font-weight: 800;
+  letter-spacing: 0.3px;
+  font-size: 1rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  text-transform: uppercase;
+  transition: all 0.3s ease;
+}
+.btn-view:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 24px rgba(234, 143, 50, 0.5);
+}
+
+/* ========= POPUP OVERLAY ========= */
+.popup-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 2000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px;
+  background: rgba(34, 64, 74, 0.96);
+  backdrop-filter: blur(10px);
+  overflow-y: auto;
+}
+
+/* ========= POPUP CONTAINER ========= */
+.popup-content {
+  background: linear-gradient(135deg, #22404a, #1a3238);
+  border: 2px solid rgba(197, 190, 161, 0.2);
+  border-radius: 30px;
+  max-width: 900px;
+  width: 100%;
+  max-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  box-shadow: 0 24px 60px rgba(0,0,0,0.55), 0 0 50px rgba(234,143,50,0.15);
+  animation: popupSlide 0.35s ease;
+}
+
+@keyframes popupSlide {
+  from { 
+    transform: translateY(40px) scale(0.96); 
+    opacity: 0; 
+  }
+  to { 
+    transform: translateY(0) scale(1); 
+    opacity: 1; 
+  }
+}
+
+/* Smaller popup (thank-you) */
+.small-popup {
+  max-width: 600px;
+  max-height: 75vh;
+}
+
+/* ========= CLOSE BUTTON ========= */
+.popup-close {
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  width: 46px;
+  height: 46px;
+  border: none;
+  border-radius: 50%;
+  background: #ea8f32;
+  color: #1c2f35;
+  font-size: 1.1rem;
+  cursor: pointer;
+  display: flex; 
+  align-items: center; 
+  justify-content: center;
+  box-shadow: 0 6px 16px rgba(234,143,50,0.4);
+  transition: transform 0.25s ease;
+  z-index: 3;
+}
+
+.popup-close:hover { 
+  transform: rotate(90deg) scale(1.08); 
+}
+
+/* ========= HEADER (HERO) — NON-SCROLLING ========= */
+.popup-header {
+  position: relative;
+  height: 320px;
+  flex: 0 0 auto;
+  overflow: hidden;
+  border-radius: 28px 28px 0 0;
+}
+
+.popup-header img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.popup-title {
+  position: absolute;
+  left: 40px;
+  right: 40px;
+  bottom: 30px;
+}
+
+.popup-title h2 {
+  margin: 0 0 8px;
+  font-size: 2.6rem;
+  font-weight: 800;
+  color: #ffffff;
+  text-shadow: 0 4px 20px rgba(0,0,0,0.55);
+}
+
+.popup-title p {
+  margin: 0;
+  font-weight: 700;
+  color: #ffd7a8;
+}
+
+/* ========= SCROLLABLE BODY ========= */
+.popup-body,
+.scrollable-popup {
+  padding: 40px 50px;
+  color: #f6ead3;
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow-y: auto;
+}
+
+.popup-body::-webkit-scrollbar,
+.scrollable-popup::-webkit-scrollbar { 
+  width: 10px; 
+}
+
+.popup-body::-webkit-scrollbar-thumb,
+.scrollable-popup::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #ea8f32, #d67820);
+  border-radius: 10px;
+}
+
+.popup-body::-webkit-scrollbar-track,
+.scrollable-popup::-webkit-scrollbar-track {
+  background: rgba(255,255,255,0.05);
+}
+
+/* Details list */
+.popup-details {
+  list-style: none;
+  padding: 0;
+  margin-bottom: 30px;
+  display: grid;
+  gap: 14px;
+}
+.popup-details li {
+  background: rgba(197, 190, 161, 0.1);
+  padding: 12px 20px;
+  border-left: 4px solid #ea8f32;
+  border-radius: 10px;
+  color: #f7f0e5;
+}
+
+/* Summary & Highlights */
+.popup-summary h3,
+.popup-highlights h3 {
+  color: #ffb56e;
+  margin-bottom: 18px;
+  font-size: 1.6rem;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+}
+.popup-summary p,
+.popup-highlights li {
+  color: #f6ead3;
+  line-height: 1.75;
+}
+.popup-highlights ul { 
+  list-style: none; 
+  padding: 0; 
+  margin: 0; 
+  display: grid; 
+  gap: 12px; 
+}
+.popup-highlights li i { 
+  color: #ffb56e; 
+  margin-right: 8px; 
+}
+
+/* Thank-you styles */
+.ty-title {
+  color: #ffb56e;
+  font-size: 2rem;
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  justify-content: center;
+}
+.ty-text { 
+  color: #f6ead3; 
+  line-height: 1.65; 
+  margin-bottom: 26px; 
+}
+.center-btn { 
+  display: block !important; 
+  margin: 0 auto !important; 
+}
+
+/* ========= BOOKING FORM ========= */
+.form-heading {
+  text-align: center;
+  margin: 0 0 14px;
+  font-size: 1.6rem;
+  font-weight: 800;
+  letter-spacing: .3px;
+  text-transform: uppercase;
+  color: #ffb56e;
+}
+
+.booking-form {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+
+.form-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.form-group {
+  flex: 1;
+  min-width: 240px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.form-group label,
+.booking-form label {
+  font-weight: 700;
+  font-size: 0.98rem;
+  color: #ffffff !important;
+  opacity: 1 !important;
+}
+
+.form-group input,
+.form-group textarea,
+.booking-form input,
+.booking-form textarea {
+  padding: 14px 16px;
+  background: rgba(255, 255, 255, 0.1) !important;
+  border: 1px solid rgba(233,214,182,0.38);
+  border-radius: 10px;
+  color: #ffffff !important;
+  font-size: 1rem;
+  outline: none;
+  transition: all 0.2s ease;
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder,
+.booking-form input::placeholder,
+.booking-form textarea::placeholder {
+  color: rgba(255, 255, 255, 0.5) !important;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  border-color: #ffb56e;
+  box-shadow: 0 0 10px rgba(234,143,50,0.4);
+}
+
+.form-group textarea { 
+  resize: vertical;
+  min-height: 100px;
+}
+
+/* ========= POPUP BUTTONS ========= */
+.popup-buttons {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  margin-top: 8px;
+}
+
+.btn-primary,
+.btn-secondary {
+  padding: 16px;
+  border-radius: 12px;
+  font-weight: 800;
+  text-transform: uppercase;
+  cursor: pointer;
+  border: none;
+  transition: all 0.25s ease;
+  font-size: 0.95rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, #ea8f32, #d67820);
+  color: #1c2f35;
+}
+
+.btn-primary:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 22px rgba(234,143,50,0.5);
+}
+
+.btn-primary:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.btn-secondary {
+  background: transparent;
+  border: 2px solid rgba(197,190,161,0.35);
+  color: #f6ead3;
+}
+
+.btn-secondary:hover {
+  background: rgba(197,190,161,0.12);
+  color: #ffffff;
+  border-color: rgba(197,190,161,0.5);
+}
+
+/* ========= RESPONSIVE ========= */
+@media (max-width: 768px) {
+  .popup-overlay {
+    padding: 20px;
+  }
+  
+  .popup-content { 
+    border-radius: 24px;
+    max-height: 95vh;
+  }
+  
+  .popup-body { 
+    padding: 28px; 
+  }
+  
+  .popup-buttons { 
+    grid-template-columns: 1fr; 
+    gap: 14px; 
+  }
+  
+  .popup-title h2 { 
+    font-size: 2rem; 
+  }
+  
+  .popup-title {
+    left: 28px;
+    right: 28px;
+    bottom: 20px;
+  }
+  
+  .form-group {
+    min-width: 100%;
+  }
+  
+  .packages-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .popup-overlay {
+    padding: 10px;
+  }
+  
+  .popup-title h2 { 
+    font-size: 1.7rem; 
+  }
+  
+  .popup-header { 
+    height: 280px; 
+  }
+  
+  .popup-body {
+    padding: 20px;
+  }
+  
+  .popup-title {
+    left: 20px;
+    right: 20px;
+  }
+  
+  .form-heading {
+    font-size: 1.3rem;
+  }
+  
+  .section-title {
+    font-size: 2.5rem;
+  }
+}

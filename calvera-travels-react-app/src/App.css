@@ -1,0 +1,219 @@
+:root {
+  --primary-color: #007bff;
+  --secondary-color: #6c757d;
+  --success-color: #28a745;
+  --danger-color: #dc3545;
+  --warning-color: #ffc107;
+  --info-color: #17a2b8;
+  --light-color: #f8f9fa;
+  --dark-color: #343a40;
+
+  --text-color: #333;
+  --bg-color: #fff;
+
+  /* Header bases */
+  --header-bg: rgba(255, 255, 255, 0.9);
+  --header-glass: rgba(255, 255, 255, 0.15);   /* top, over hero */
+  --header-glass-scrolled: rgba(255, 255, 255, 0.85);
+
+  --footer-bg: #2c3e50;
+
+  /* Dynamic nav color when glass-over-hero */
+  --nav-link-on-hero: #ffffff;
+}
+
+[data-theme='dark'] {
+  --primary-color: #007bff;
+  --secondary-color: #6c757d;
+  --success-color: #28a745;
+  --danger-color: #dc3545;
+  --warning-color: #ffc107;
+  --info-color: #17a2b8;
+  --light-color: #343a40;
+  --dark-color: #f8f9fa;
+
+  --text-color: #f8f9fa;
+  --bg-color: #212529;
+
+  /* Header bases (dark) */
+  --header-bg: rgba(33, 37, 41, 0.9);
+  --header-glass: rgba(33, 37, 41, 0.28);       /* top, over hero */
+  --header-glass-scrolled: rgba(33, 37, 41, 0.82);
+
+  --footer-bg: #1a1a1a;
+
+  /* Brighter over hero for contrast */
+  --nav-link-on-hero: #fdfdfd;
+}
+
+/* Reset / base */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: 'Poppins', sans-serif;
+  line-height: 1.6;
+  color: var(--text-color);
+  background-color: var(--bg-color);
+  transition: background-color 0.3s, color 0.3s;
+  overflow-x: hidden;
+}
+
+/* Layout utils */
+.container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+.page-section { padding: 80px 0; }
+.section-title {
+  text-align: center; font-size: 2.5rem; margin-bottom: 50px;
+  color: var(--primary-color); font-weight: 700;
+}
+.text-center { text-align: center; }
+
+/* Buttons */
+.btn {
+  display: inline-block; padding: 12px 30px; border: none; border-radius: 50px;
+  text-decoration: none; font-weight: bold; text-transform: uppercase;
+  transition: all 0.3s ease; cursor: pointer;
+}
+.btn-primary {
+  background-image: linear-gradient(to right, var(--primary-color), #0056b3);
+  color: white; box-shadow: 0 4px 15px rgba(0, 123, 255, 0.3);
+}
+.btn-primary:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(0, 123, 255, 0.4);
+}
+.btn-secondary { background-color: transparent; color: var(--primary-color); border: 2px solid var(--primary-color); }
+.btn-secondary:hover { background-color: var(--primary-color); color: white; }
+
+/* ===================== HEADER (GLASS) ===================== */
+/*
+Add 'over-hero' class to the header when it sits on top of a hero
+(e.g., <header class="header over-hero">). Your React already toggles
+'scrolled'; keep that. Together:
+  - .header.over-hero:not(.scrolled) => transparent glass over hero
+  - .header.scrolled => denser background
+*/
+.header {
+  position: fixed; top: 0; width: 100%; z-index: 1000;
+  background-color: var(--header-bg);
+  transition: background-color 0.3s, box-shadow 0.3s;
+  /* Glassy baseline */
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+  border-bottom: 1px solid rgba(255,255,255,0.18);
+}
+
+/* Ultra glass at top, over hero */
+.header.over-hero:not(.scrolled) {
+  background-color: var(--header-glass);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+  border-bottom: 1px solid rgba(255,255,255,0.22);
+}
+
+/* Solid-ish on scroll */
+.header.scrolled {
+  background-color: var(--header-glass-scrolled);
+  box-shadow: 0 10px 28px rgba(0,0,0,0.18);
+}
+
+/* Navbar layout */
+.navbar { padding: 1rem 0; }
+.nav-container {
+  max-width: 1200px; margin: 0 auto; padding: 0 20px;
+  display: flex; justify-content: space-between; align-items: center;
+}
+
+/* Logo */
+.logo-text h2 { color: var(--text-color); margin: 0; font-size: 1.5rem; }
+.logo-text span { color: var(--primary-color); font-size: 0.9rem; font-weight: 700; }
+
+/* Nav menu */
+.nav-menu { display: flex; list-style: none; gap: 2rem; }
+
+/* Link base */
+.nav-link {
+  text-decoration: none;
+  color: var(--text-color);
+  font-weight: 500;
+  transition: color 0.3s ease;
+  position: relative;
+}
+
+/* Make links bright when header floats over hero (not scrolled) */
+.header.over-hero:not(.scrolled) .nav-link {
+  color: var(--nav-link-on-hero);
+}
+
+/* Hover underline */
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: -5px; left: 0;
+  width: 0; height: 2px; background-color: var(--primary-color);
+  transition: width 0.3s;
+}
+.nav-link:hover::after { width: 100%; }
+
+/* ===================== SEARCH BAR ===================== */
+.search-bar {
+  display: flex; align-items: center;
+  background: rgba(255, 255, 255, 0.85);
+  border-radius: 25px; overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  transition: background 0.3s ease;
+}
+.search-bar input {
+  border: none; outline: none; padding: 7px 12px; font-size: 0.9rem; width: 180px;
+  background: transparent; color: inherit;
+}
+.search-bar button {
+  background: var(--primary-color); border: none; color: #fff;
+  padding: 7px 14px; cursor: pointer; transition: background 0.3s ease;
+}
+.search-bar button:hover { background: #0056b3; }
+
+/* Make search ghostier when header is over hero and not scrolled */
+.header.over-hero:not(.scrolled) .search-bar {
+  background: rgba(255,255,255,0.15);
+  border: 1px solid rgba(255,255,255,0.22);
+}
+.header.over-hero:not(.scrolled) .search-bar input { color: var(--nav-link-on-hero); }
+
+/* ===================== FOOTER ===================== */
+.footer {
+  background-color: var(--footer-bg);
+  color: var(--light-color);
+  padding: 50px 0 20px;
+}
+.footer-content {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem; margin-bottom: 2rem;
+}
+.footer-section h3 { margin-bottom: 1.5rem; color: var(--primary-color); }
+.footer-section ul { list-style: none; }
+.footer-section ul li { margin-bottom: 0.5rem; }
+.footer-section a {
+  color: var(--light-color); text-decoration: none; transition: color 0.3s ease;
+}
+.footer-section a:hover { color: var(--primary-color); }
+.social-icons { display: flex; gap: 1rem; margin-top: 1rem; }
+.social-icons a { color: var(--light-color); font-size: 1.2rem; transition: color 0.3s ease; }
+.social-icons a:hover { color: var(--primary-color); }
+.footer-bottom {
+  text-align: center; padding-top: 2rem; border-top: 1px solid var(--secondary-color); color: var(--secondary-color);
+}
+
+/* ===================== OPTIONAL HELPERS ===================== */
+/*
+If your main content jumps under the fixed header on non-hero pages,
+add a spacer div with the header’s height. Example:
+  <div class="header-spacer"></div>
+and set:
+*/
+.header-spacer { height: 72px; }
+
+/*
+For hero pages where you want the hero to sit UNDER the header glass,
+DO NOT use a spacer above the hero. Add 'over-hero' to the header on
+that route (your React can do this based on pathname).
+*/

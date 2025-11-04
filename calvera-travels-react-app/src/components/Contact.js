@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import "./contact.css";
 
 const Contact = () => {
-  // ====== STATE ======
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -14,7 +13,10 @@ const Contact = () => {
   const [errors, setErrors] = useState({});
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  // ====== HANDLERS ======
+  // ✅ Use backend URL dynamically
+  const API_BASE_URL =
+    process.env.REACT_APP_API_BASE_URL || "http://localhost:4000";
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((p) => ({ ...p, [name]: value }));
@@ -42,7 +44,7 @@ const Contact = () => {
 
     setLoading(true);
     try {
-      const res = await fetch("http://localhost:4000/api/v1/contact", {
+      const res = await fetch(`${API_BASE_URL}/api/v1/contact`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),
@@ -53,7 +55,6 @@ const Contact = () => {
         throw new Error(err?.message || "Failed to send message");
       }
 
-      // Success → show modal + reset form
       setIsModalOpen(true);
       setFormData({ name: "", email: "", phone: "", subject: "", message: "" });
     } catch (error) {
@@ -64,15 +65,11 @@ const Contact = () => {
     }
   };
 
-  // ====== MODAL a11y (ESC to close, lock body scroll) ======
   useEffect(() => {
     const onEsc = (e) => e.key === "Escape" && setIsModalOpen(false);
     document.addEventListener("keydown", onEsc);
-    if (isModalOpen) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "";
-    }
+    if (isModalOpen) document.body.style.overflow = "hidden";
+    else document.body.style.overflow = "";
     return () => {
       document.body.style.overflow = "";
       document.removeEventListener("keydown", onEsc);
@@ -80,7 +77,11 @@ const Contact = () => {
   }, [isModalOpen]);
 
   const contactInfo = [
-    { icon: "fa-map-marker-alt", title: "Visit Us", lines: ["508/A, Prithika Mawatha, Pitipana North, Homagama."] },
+    {
+      icon: "fa-map-marker-alt",
+      title: "Visit Us",
+      lines: ["508/A, Prithika Mawatha, Pitipana North, Homagama."],
+    },
     { icon: "fa-phone-alt", title: "Call Us", lines: ["+94 76 191 5100"] },
     { icon: "fa-envelope", title: "Email Us", lines: ["inquiries@calveratravels.com"] },
     { icon: "fa-clock", title: "Working Hours", lines: ["24/7"] },
@@ -88,7 +89,6 @@ const Contact = () => {
 
   return (
     <div className="contact-page">
-      {/* Simple header (no hero) */}
       <header className="contact-header">
         <span className="badge">Contact</span>
         <h1>Let’s Plan Your Next Trip</h1>
@@ -96,13 +96,13 @@ const Contact = () => {
         <div className="section-divider" />
       </header>
 
-      {/* Info cards */}
+      {/* Info Cards */}
       <section className="contact-info-section">
         <div className="container">
           <div className="info-grid">
             {contactInfo.map((item, idx) => (
               <div key={idx} className="info-card">
-                <div className="info-icon" aria-hidden="true">
+                <div className="info-icon">
                   <i className={`fas ${item.icon}`} />
                 </div>
                 <h3>{item.title}</h3>
@@ -138,10 +138,10 @@ const Contact = () => {
                     value={formData.name}
                     onChange={handleChange}
                     className={errors.name ? "error" : ""}
-                    autoComplete="name"
                   />
                   {errors.name && <span className="error-text">{errors.name}</span>}
                 </div>
+
                 <div className="form-group">
                   <label htmlFor="email">Email Address *</label>
                   <input
@@ -152,7 +152,6 @@ const Contact = () => {
                     value={formData.email}
                     onChange={handleChange}
                     className={errors.email ? "error" : ""}
-                    autoComplete="email"
                   />
                   {errors.email && <span className="error-text">{errors.email}</span>}
                 </div>
@@ -169,10 +168,10 @@ const Contact = () => {
                     value={formData.phone}
                     onChange={handleChange}
                     className={errors.phone ? "error" : ""}
-                    autoComplete="tel"
                   />
                   {errors.phone && <span className="error-text">{errors.phone}</span>}
                 </div>
+
                 <div className="form-group">
                   <label htmlFor="subject">Subject *</label>
                   <input
@@ -205,12 +204,12 @@ const Contact = () => {
               <button type="submit" className="btn-submit" disabled={loading}>
                 {loading ? (
                   <>
-                    <i className="fas fa-spinner fa-spin" aria-hidden="true" />
+                    <i className="fas fa-spinner fa-spin" />
                     &nbsp;Sending...
                   </>
                 ) : (
                   <>
-                    <i className="fas fa-paper-plane" aria-hidden="true" />
+                    <i className="fas fa-paper-plane" />
                     &nbsp;Send Message
                   </>
                 )}
@@ -240,26 +239,26 @@ const Contact = () => {
           <h2>Follow Our Journey</h2>
           <p>Stay connected with us on social media</p>
           <div className="social-links">
-            <a href="https://web.facebook.com/calveratravels/" className="social-icon facebook" aria-label="Facebook">
-              <i className="fab fa-facebook-f" aria-hidden="true"></i>
+            <a href="https://web.facebook.com/calveratravels/" className="social-icon facebook">
+              <i className="fab fa-facebook-f" />
             </a>
-            <a href="https://www.instagram.com/calvera_travels_/" className="social-icon instagram" aria-label="Instagram">
-              <i className="fab fa-instagram" aria-hidden="true"></i>
+            <a href="https://www.instagram.com/calvera_travels_/" className="social-icon instagram">
+              <i className="fab fa-instagram" />
             </a>
-            <a href="https://x.com/Calveratravel" className="social-icon x" aria-label="Twitter">
-              <i className="fab fa-twitter" aria-hidden="true"></i>
+            <a href="https://x.com/Calveratravel" className="social-icon x">
+              <i className="fab fa-twitter" />
             </a>
-            <a href="https://www.linkedin.com/company/calvera-travels-pvt-ltd/?viewAsMember=true" className="social-icon linkedin" aria-label="LinkedIn">
-              <i className="fab fa-linkedin-in" aria-hidden="true"></i>
+            <a href="https://www.linkedin.com/company/calvera-travels-pvt-ltd/?viewAsMember=true" className="social-icon linkedin">
+              <i className="fab fa-linkedin-in" />
             </a>
-            <a href="https://www.youtube.com/@CalveraTravels" className="social-icon youtube" aria-label="YouTube">
-              <i className="fab fa-youtube" aria-hidden="true"></i>
+            <a href="https://www.youtube.com/@CalveraTravels" className="social-icon youtube">
+              <i className="fab fa-youtube" />
             </a>
           </div>
         </div>
       </section>
 
-      {/* ====== THANK YOU MODAL (built-in) ====== */}
+      {/* Success Modal */}
       {isModalOpen && (
         <div
           className="modal-overlay"
@@ -283,7 +282,7 @@ const Contact = () => {
 
             <h3 className="modal-title">Thank you for contacting us!</h3>
             <p className="modal-text">
-              Our team will reach you soon. We&apos;ve also sent a confirmation email.
+              Our team will reach you soon. We’ve also sent a confirmation email.
             </p>
 
             <button className="btn-submit modal-ok" onClick={() => setIsModalOpen(false)}>

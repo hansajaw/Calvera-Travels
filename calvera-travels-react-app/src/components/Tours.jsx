@@ -50,6 +50,10 @@ const BookingFormPopup = ({ pkg, onSubmit, onClose }) => {
   });
   const [loading, setLoading] = useState(false);
 
+  // ✅ Use environment-based backend URL
+  const API_BASE_URL =
+    process.env.REACT_APP_API_BASE_URL || "http://localhost:4000";
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((f) => ({ ...f, [name]: value }));
@@ -60,8 +64,7 @@ const BookingFormPopup = ({ pkg, onSubmit, onClose }) => {
     setLoading(true);
 
     try {
-      // Send to your backend API
-      const res = await fetch("http://localhost:4000/api/v1/tour/book", {
+      const res = await fetch(`${API_BASE_URL}/api/v1/tour/book`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -72,17 +75,17 @@ const BookingFormPopup = ({ pkg, onSubmit, onClose }) => {
           travelers: Number(formData.travellers || 1),
           notes: formData.note,
           tourId: pkg?.id,
-          tourName: pkg?.title, // so emails show the package name
+          tourName: pkg?.title,
         }),
       });
 
       const data = await res.json();
       if (!res.ok) throw new Error(data?.message || "Booking failed");
 
-      onSubmit?.(); // Show thank-you popup
+      onSubmit?.();
     } catch (err) {
       console.error("Booking error:", err);
-      alert(err.message || "Could not connect to server.");
+      alert(err.message || "Could not connect to the server.");
     } finally {
       setLoading(false);
     }
@@ -92,15 +95,12 @@ const BookingFormPopup = ({ pkg, onSubmit, onClose }) => {
 
   return (
     <div className="popup-overlay" onClick={onClose}>
-      <div
-        className="popup-content"
-        onClick={(e) => e.stopPropagation()}
-      >
+      <div className="popup-content" onClick={(e) => e.stopPropagation()}>
         <button className="popup-close" onClick={onClose}>
           <i className="fas fa-times"></i>
         </button>
 
-        {/* Header (Hero) — not scrollable */}
+        {/* Header */}
         <div className="popup-header">
           <img src={pkg.image} alt={pkg.imageAlt} />
           <div className="popup-title">
@@ -109,9 +109,11 @@ const BookingFormPopup = ({ pkg, onSubmit, onClose }) => {
           </div>
         </div>
 
-        {/* Scrollable body only */}
+        {/* Scrollable form */}
         <div className="popup-body scrollable-popup">
-          <h3 className="form-heading">Fill these fields to receive your package</h3>
+          <h3 className="form-heading">
+            Fill these fields to receive your package
+          </h3>
           <form className="booking-form" onSubmit={handleSubmit}>
             <div className="form-group">
               <label>Full Name</label>
@@ -219,15 +221,12 @@ const PackagePopup = ({ pkg, onClose, onReceiveNow }) => {
 
   return (
     <div className="popup-overlay" onClick={onClose}>
-      <div
-        className="popup-content"
-        onClick={(e) => e.stopPropagation()}
-      >
+      <div className="popup-content" onClick={(e) => e.stopPropagation()}>
         <button className="popup-close" onClick={onClose}>
           <i className="fas fa-times"></i>
         </button>
 
-        {/* Header (Hero) — not scrollable */}
+        {/* Header */}
         <div className="popup-header">
           <img src={pkg.image} alt={pkg.imageAlt} />
           <div className="popup-title">
@@ -289,7 +288,6 @@ const Tours = () => {
   const [showBookingForm, setShowBookingForm] = useState(false);
   const [showConfirmation, setShowConfirmation] = useState(false);
 
-  // Hide header & lock body scroll when any popup is shown
   useEffect(() => {
     const anyOpen = showPackagePopup || showBookingForm || showConfirmation;
     document.body.classList.toggle("popup-active", anyOpen);
@@ -306,6 +304,27 @@ const Tours = () => {
     "/images/Tours/tours hero back/tourshero (3).jpg",
   ];
 
+  // Flow Handlers
+  const openSummary = (pkg) => {
+    setSelectedPackage(pkg);
+    setShowPackagePopup(true);
+  };
+  const closeSummary = () => {
+    setSelectedPackage(null);
+    setShowPackagePopup(false);
+  };
+  const receiveNow = () => {
+    setShowPackagePopup(false);
+    setShowBookingForm(true);
+  };
+  const closeBookingForm = () => setShowBookingForm(false);
+  const onBooked = () => {
+    setShowBookingForm(false);
+    setShowConfirmation(true);
+  };
+  const closeConfirmation = () => setShowConfirmation(false);
+
+  // Packages (unchanged)
   const packages = [
     {
       id: "romantic-escape",
@@ -363,8 +382,7 @@ const Tours = () => {
       title: "Calvera Wild Trails",
       duration: "8 Days / 7 Nights",
       destinations: ["Wilpattu", "Kandy", "Nuwara Eliya", "Yala", "Mirissa"],
-      idealFor:
-        "Nature Lovers, Wildlife Enthusiasts & Adventure Seekers",
+      idealFor: "Nature Lovers, Wildlife Enthusiasts & Adventure Seekers",
       price: "USD 1,560 per person",
       summary:
         "Journey deep into the wild heart of Sri Lanka with this thrilling nature and wildlife adventure. From leopard safaris to whale watching, every moment immerses you in breathtaking natural beauty.",
@@ -434,28 +452,6 @@ const Tours = () => {
     },
   ];
 
-  // Flow handlers
-  const openSummary = (pkg) => {
-    setSelectedPackage(pkg);
-    setShowPackagePopup(true);
-  };
-  const closeSummary = () => {
-    setSelectedPackage(null);
-    setShowPackagePopup(false);
-  };
-  const receiveNow = () => {
-    setShowPackagePopup(false);
-    setShowBookingForm(true);
-  };
-  const closeBookingForm = () => {
-    setShowBookingForm(false);
-  };
-  const onBooked = () => {
-    setShowBookingForm(false);
-    setShowConfirmation(true);
-  };
-  const closeConfirmation = () => setShowConfirmation(false);
-
   return (
     <div className="tours-page">
       <Hero
@@ -473,7 +469,6 @@ const Tours = () => {
       <section id="packages" className="packages-section">
         <div className="container">
           <h2 className="section-title">Our Tour Packages</h2>
-
           <div className="packages-grid">
             {packages.map((pkg) => (
               <div key={pkg.id} className={`package-card ${pkg.theme}`}>
@@ -481,7 +476,6 @@ const Tours = () => {
                   <img src={pkg.image} alt={pkg.imageAlt} className="card-image-main" />
                   <span className="package-tag">{pkg.title.split(" ")[1]}</span>
                 </div>
-
                 <div className="package-info">
                   <h3>{pkg.title}</h3>
                   <p>{pkg.summary.slice(0, 120)}...</p>
@@ -499,17 +493,11 @@ const Tours = () => {
       </section>
 
       {showPackagePopup && (
-        <PackagePopup
-          pkg={selectedPackage}
-          onClose={closeSummary}
-          onReceiveNow={receiveNow}
-        />
+        <PackagePopup pkg={selectedPackage} onClose={closeSummary} onReceiveNow={receiveNow} />
       )}
-
       {showBookingForm && selectedPackage && (
         <BookingFormPopup pkg={selectedPackage} onSubmit={onBooked} onClose={closeBookingForm} />
       )}
-
       {showConfirmation && <ConfirmationPopup onClose={closeConfirmation} />}
     </div>
   );

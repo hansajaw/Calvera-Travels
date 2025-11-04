@@ -15,6 +15,7 @@ app.use(express.urlencoded({ extended: true }));
 
 // --- CORS ---
 const allowedOrigins = [
+  'http://localhost:3000',
   'https://calveratravels.com',
   'https://www.calveratravels.com',
   'https://clavera-travels-react-app.vercel.app',

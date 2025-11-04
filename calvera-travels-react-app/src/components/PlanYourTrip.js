@@ -6,9 +6,10 @@ import tourPackages from "../data/tourPackages";
 const PlanYourTrip = () => {
   const [isSubmitted, setIsSubmitted] = useState(false);
 
-  const API_BASE_URL =
-    process.env.REACT_APP_API_BASE_URL || "http://localhost:4000";
-
+  const API_BASE_URL = process.env.NODE_ENV === 'production'
+    ? 'https://clavera-ueqs.vercel.app/api/v1'
+    : 'http://localhost:4000/api/v1';
+    
   const heroImages = [
     "/images/Planyortrip/PYTBack1.jpg",
     "/images/Planyortrip/PYTBack2.jpg",
@@ -45,7 +46,7 @@ const PlanYourTrip = () => {
     formObject.agreeTerms = !!data.get("agreeTerms");
 
     try {
-      const res = await fetch(`${API_BASE_URL}/api/v1/inquiries`, {
+      const res = await fetch(`${API_BASE_URL}/inquiries`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formObject),

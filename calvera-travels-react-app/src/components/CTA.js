@@ -6,12 +6,17 @@ const CTA = () => {
   const [submitted, setSubmitted] = useState(false);
 
   // ✅ Automatically use production backend on Vercel
-  const API_BASE_URL = process.env.REACT_APP_API_BASE_URL || "http://localhost:4000";
+  const API_BASE_URL = process.env.NODE_ENV === 'production'
+    ? 'https://clavera-ueqs.vercel.app/api/v1'
+    : 'http://localhost:4000/api/v1';
 
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!email.trim()) return;
+
+    console.log("API_BASE_URL:", API_BASE_URL);
+    console.log("Fetching URL:", `${API_BASE_URL}/newsletter/subscribe`);
 
     try {
       const res = await fetch(`${API_BASE_URL}/newsletter/subscribe`, {
@@ -21,6 +26,8 @@ const CTA = () => {
       });
 
       const data = await res.json();
+      console.log("Response status:", res.status);
+      console.log("Response data:", data);
 
       if (res.ok) {
         setSubmitted(true);

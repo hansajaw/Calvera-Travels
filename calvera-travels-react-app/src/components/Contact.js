@@ -2,8 +2,9 @@ import React, { useState, useEffect } from "react";
 import "./contact.css";
 
 const Contact = () => {
-  const API_BASE_URL =
-    process.env.REACT_APP_API_BASE_URL || "http://localhost:4000";
+  const API_BASE_URL = process.env.NODE_ENV === 'production'
+    ? 'https://clavera-ueqs.vercel.app/api/v1'
+    : 'http://localhost:4000/api/v1';
 
   const [formData, setFormData] = useState({
     name: "", email: "", phone: "", subject: "", message: "",
@@ -39,7 +40,7 @@ const Contact = () => {
 
     setLoading(true);
     try {
-      const res = await fetch(`${API_BASE_URL}/api/v1/contact`, {
+      const res = await fetch(`${API_BASE_URL}/contact`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),

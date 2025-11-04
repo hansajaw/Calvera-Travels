@@ -9,10 +9,12 @@ export async function submitInquiry(req, res, next) {
 
     // === 2. Configure Gmail SMTP transporter ===
     const transporter = nodemailer.createTransport({
-      service: "gmail",
+      host: process.env.MAIL_HOST || "smtp.gmail.com",
+      port: Number(process.env.MAIL_PORT || 587),
+      secure: false, // true only for 465
       auth: {
-        user: process.env.MAIL_USER, // your Gmail address
-        pass: process.env.MAIL_PASS, // your Gmail App Password (16 chars)
+        user: process.env.MAIL_USER,
+        pass: process.env.MAIL_PASS,
       },
     });
 

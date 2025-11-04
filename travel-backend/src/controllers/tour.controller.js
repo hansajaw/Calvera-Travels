@@ -8,7 +8,9 @@ export const bookTour = async (req, res) => {
 
     // === Setup mail transporter ===
     const transporter = nodemailer.createTransport({
-      service: "gmail", // or smtp.yourdomain.com
+      host: process.env.MAIL_HOST || "smtp.gmail.com",
+      port: Number(process.env.MAIL_PORT || 587),
+      secure: false, // true only for 465
       auth: {
         user: process.env.MAIL_USER,
         pass: process.env.MAIL_PASS,

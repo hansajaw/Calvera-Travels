@@ -6,9 +6,8 @@ import tourPackages from "../data/tourPackages";
 const PlanYourTrip = () => {
   const [isSubmitted, setIsSubmitted] = useState(false);
 
-  // ✅ Use backend URL from environment variable
-const API_BASE_URL = process.env.REACT_APP_API_BASE_URL || "http://localhost:4000";
-
+  const API_BASE_URL =
+    process.env.REACT_APP_API_BASE_URL || "http://localhost:4000";
 
   const heroImages = [
     "/images/Planyortrip/PYTBack1.jpg",
@@ -34,7 +33,6 @@ const API_BASE_URL = process.env.REACT_APP_API_BASE_URL || "http://localhost:400
       }
     });
 
-    // ✅ Convert dates properly
     if (data.get("arrivalDate")) {
       formObject.arrivalDate = new Date(data.get("arrivalDate"));
     }
@@ -42,12 +40,9 @@ const API_BASE_URL = process.env.REACT_APP_API_BASE_URL || "http://localhost:400
       formObject.departureDate = new Date(data.get("departureDate"));
     }
 
-    // ✅ Add defaults
     formObject.sourcePage = "plan-trip";
     formObject.agreePrivacy = !!data.get("agreePrivacy");
     formObject.agreeTerms = !!data.get("agreeTerms");
-
-    console.log("Submitting form:", formObject);
 
     try {
       const res = await fetch(`${API_BASE_URL}/api/v1/inquiries`, {
@@ -57,16 +52,13 @@ const API_BASE_URL = process.env.REACT_APP_API_BASE_URL || "http://localhost:400
       });
 
       if (!res.ok) throw new Error("Failed to submit");
-      const result = await res.json();
-      console.log("✅ Backend response:", result);
-
+      await res.json();
       setIsSubmitted(true);
       e.target.reset();
-
       setTimeout(() => setIsSubmitted(false), 5000);
     } catch (err) {
       console.error("❌ Error submitting:", err);
-      alert("Could not connect to the server. Please try again later.");
+      alert("Something went wrong while submitting. Please try again.");
     }
   };
 
@@ -96,7 +88,6 @@ const API_BASE_URL = process.env.REACT_APP_API_BASE_URL || "http://localhost:400
         <div className="section">
           <h2 className="section-title">Your Travel Preferences</h2>
 
-          {/* Tour Scroll Bar */}
           <div className="tour-scroll-bar">
             <div className="scroll-content">
               {tourPackages.map((tour) => (
@@ -112,7 +103,6 @@ const API_BASE_URL = process.env.REACT_APP_API_BASE_URL || "http://localhost:400
             </div>
           </div>
 
-          {/* Form or Success Message */}
           {isSubmitted ? (
             <div className="success-message">
               <div className="success-icon">

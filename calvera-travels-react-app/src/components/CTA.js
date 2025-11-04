@@ -6,9 +6,8 @@ const CTA = () => {
   const [submitted, setSubmitted] = useState(false);
 
   // ✅ Automatically use production backend on Vercel
-  const API_BASE_URL =
-    process.env.REACT_APP_API_BASE_URL ||
-    "https://clavera-ueqs.vercel.app/api/v1";
+  const API_BASE_URL = process.env.REACT_APP_API_BASE_URL || "http://localhost:4000";
+
 
   const handleSubmit = async (e) => {
     e.preventDefault();

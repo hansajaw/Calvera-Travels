@@ -1,3 +1,4 @@
+// travel-backend/src/app.js
 import express from "express";
 import helmet from "helmet";
 import morgan from "morgan";
@@ -7,34 +8,40 @@ import { notFound, errorHandler } from "./middleware/errorHandler.js";
 
 const app = express();
 
-// Security & parsing
 app.use(helmet());
 app.use(morgan("dev"));
 app.use(express.json({ limit: "2mb" }));
 app.use(express.urlencoded({ extended: true }));
 
-// CORS configuration
-const allowedOrigins = process.env.CLIENT_ORIGIN?.split(",").map((o) => o.trim()) || [];
+// CORS — allow your deployed frontend(s)
+const allowedOrigins = [
+  "https://calveratravels.com",
+  "https://www.calveratravels.com",
+  "https://calvera-travels-react-app.vercel.app",
+  "https://clavera-travels-react-app.vercel.app",
+  /\.vercel\.app$/,
+];
 app.use(
   cors({
-    origin: function (origin, callback) {
-      if (!origin) return callback(null, true);
-      if (allowedOrigins.some((url) => origin.includes(url))) return callback(null, true);
-      console.warn("❌ Blocked CORS origin:", origin);
-      callback(new Error("Not allowed by CORS"));
+    origin(origin, cb) {
+      if (!origin) return cb(null, true);
+      const ok = allowedOrigins.some((o) =>
+        o instanceof RegExp ? o.test(origin) : o === origin
+      );
+      return ok ? cb(null, true) : cb(new Error("Not allowed by CORS"));
     },
+    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+    credentials: true,
   })
 );
 
-// Base routes
-app.use("/api/v1", routes);
-
-// Health route
+// Health & routes
 app.get("/api/health", (req, res) =>
   res.json({ ok: true, env: process.env.NODE_ENV || "development" })
 );
+app.use("/api/v1", routes);
 
-// Error handling
+// Errors
 app.use(notFound);
 app.use(errorHandler);
 

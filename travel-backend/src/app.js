@@ -7,48 +7,34 @@ import { notFound, errorHandler } from "./middleware/errorHandler.js";
 
 const app = express();
 
-// === Middleware Setup ===
+// Security & parsing
 app.use(helmet());
 app.use(morgan("dev"));
 app.use(express.json({ limit: "2mb" }));
 app.use(express.urlencoded({ extended: true }));
 
-// === CORS Configuration ===
-const allowedOrigins = [
-  "https://www.calveratravels.com", // ✅ production domain
-  "https://calveratravels.com",     // non-www
-  "http://localhost:3000",          // local dev frontend
-  /\.vercel\.app$/,                 // all vercel preview URLs
-];
-
-// Dynamic CORS check
+// CORS configuration
+const allowedOrigins = process.env.CLIENT_ORIGIN?.split(",").map((o) => o.trim()) || [];
 app.use(
   cors({
     origin: function (origin, callback) {
-      if (!origin) return callback(null, true); // allow tools like Postman
-      const isAllowed = allowedOrigins.some((pattern) =>
-        pattern instanceof RegExp ? pattern.test(origin) : pattern === origin
-      );
-      if (isAllowed) callback(null, true);
-      else {
-        console.warn("❌ Blocked CORS origin:", origin);
-        callback(new Error("Not allowed by CORS"));
-      }
+      if (!origin) return callback(null, true);
+      if (allowedOrigins.some((url) => origin.includes(url))) return callback(null, true);
+      console.warn("❌ Blocked CORS origin:", origin);
+      callback(new Error("Not allowed by CORS"));
     },
-    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
-    credentials: true,
   })
 );
 
-// === Base Routes ===
+// Base routes
 app.use("/api/v1", routes);
 
-// Health check endpoint (for debugging)
-app.get("/api/v1/health", (req, res) => {
-  res.json({ ok: true, env: process.env.NODE_ENV || "development" });
-});
+// Health route
+app.get("/api/health", (req, res) =>
+  res.json({ ok: true, env: process.env.NODE_ENV || "development" })
+);
 
-// === Error Handlers ===
+// Error handling
 app.use(notFound);
 app.use(errorHandler);
 

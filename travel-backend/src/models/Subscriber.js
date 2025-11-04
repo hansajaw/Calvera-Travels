@@ -6,11 +6,10 @@ const subscriberSchema = new mongoose.Schema(
       type: String,
       required: true,
       unique: true,
-      lowercase: true,
-      trim: true,
     },
   },
   { timestamps: true }
 );
 
-export default mongoose.model("Subscriber", subscriberSchema);
+const Subscriber = mongoose.model("Subscriber", subscriberSchema);
+export default Subscriber;

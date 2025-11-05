@@ -39,7 +39,7 @@ app.use(
   })
 );
 
-app.options('*__*, cors()); // enable pre-flight
+app.options('*', cors()); // enable pre-flight
 
 // --- Routes ---
 app.use('/api/v1', routes);

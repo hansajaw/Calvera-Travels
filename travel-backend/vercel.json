@@ -1,12 +1,17 @@
 {
   "version": 2,
-  "functions": {
-    "api/**/*.js": {
-      "runtime": "nodejs20.x",
-      "memory": 1024,
-      "maxDuration": 30
+  "builds": [
+    {
+      "src": "src/server.js",
+      "use": "@vercel/node"
     }
-  },
+  ],
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "src/server.js"
+    }
+  ],
   "env": {
     "NODE_ENV": "production",
     "MONGODB_URI": "@MONGODB_URI",

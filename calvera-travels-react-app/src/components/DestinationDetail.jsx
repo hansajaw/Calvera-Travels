@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useRef, useState } from "react";
+import React, { useEffect, useMemo, useRef, useState, useCallback } from "react";
 import SEO from "./SEO";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import "./DestinationDetail.css";
@@ -377,16 +377,19 @@ function DestinationCarousel({ id, destination }) {
     [destination]
   );
 
+  const stop = useCallback(() => {
+    timerRef.current && clearInterval(timerRef.current);
+  }, []);
+
+  const start = useCallback(() => {
+    stop();
+    timerRef.current = setInterval(() => setIndex((i) => (i + 1) % images.length), 5000);
+  }, [images.length, stop]);
+
   useEffect(() => {
     start();
     return stop;
-  }, [images.length]);
-
-  const start = () => {
-    stop();
-    timerRef.current = setInterval(() => setIndex((i) => (i + 1) % images.length), 5000);
-  };
-  const stop = () => timerRef.current && clearInterval(timerRef.current);
+  }, [images.length, start, stop]);
 
   return (
     <section id={id} className="detail-carousel-section">

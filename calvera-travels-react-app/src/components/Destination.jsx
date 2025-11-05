@@ -24,7 +24,7 @@ export default function Destination() {
   const [activeFilter, setActiveFilter] = useState("all");
   const [search, setSearch] = useState("");
   const [sortBy, setSortBy] = useState("name");
-  const [viewMode, setViewMode] = useState("grid");
+  const [viewMode] = useState("grid");
   const [favorites, setFavorites] = useState([]);
 
   const regions = useMemo(() => {

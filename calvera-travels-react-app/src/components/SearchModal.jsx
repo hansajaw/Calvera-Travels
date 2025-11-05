@@ -44,7 +44,7 @@ export default function SearchModal({ isOpen, onClose }) {
 
   const container = useMemo(
     () => document.querySelector("#app-content"),
-    [isOpen]
+    []
   );
 
   function clearHighlights() {

@@ -11,16 +11,5 @@
       "src": "/(.*)",
       "dest": "src/server.js"
     }
-  ],
-  "env": {
-    "NODE_ENV": "production",
-    "MONGODB_URI": "@MONGODB_URI",
-    "MAIL_HOST": "@MAIL_HOST",
-    "MAIL_PORT": "@MAIL_PORT",
-    "MAIL_USER": "@MAIL_USER",
-    "MAIL_PASS": "@MAIL_PASS",
-    "MAIL_FROM": "@MAIL_FROM",
-    "MAIL_TO": "@MAIL_TO",
-    "CLIENT_ORIGIN": "@CLIENT_ORIGIN"
-  }
+  ]
 }

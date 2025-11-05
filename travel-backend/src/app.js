@@ -39,6 +39,8 @@ app.use(
   })
 );
 
+app.options('*__*, cors()); // enable pre-flight
+
 // --- Routes ---
 app.use('/api/v1', routes);
 

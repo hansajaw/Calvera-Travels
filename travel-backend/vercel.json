@@ -1,12 +1,21 @@
 {
+  "version": 2,
   "functions": {
-    "api/index.js": {
-      "runtime": "nodejs18.x",
+    "api/**/*.js": {
+      "runtime": "nodejs20.x",
       "memory": 1024,
-      "maxDuration": 10
+      "maxDuration": 30
     }
   },
-  "routes": [
-    { "src": "/(.*)", "dest": "api/index.js" }
-  ]
+  "env": {
+    "NODE_ENV": "production",
+    "MONGODB_URI": "@MONGODB_URI",
+    "MAIL_HOST": "@MAIL_HOST",
+    "MAIL_PORT": "@MAIL_PORT",
+    "MAIL_USER": "@MAIL_USER",
+    "MAIL_PASS": "@MAIL_PASS",
+    "MAIL_FROM": "@MAIL_FROM",
+    "MAIL_TO": "@MAIL_TO",
+    "CLIENT_ORIGIN": "@CLIENT_ORIGIN"
+  }
 }

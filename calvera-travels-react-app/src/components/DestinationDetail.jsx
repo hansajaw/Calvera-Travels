@@ -1,4 +1,5 @@
 import React, { useEffect, useMemo, useRef, useState } from "react";
+import SEO from "./SEO";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import "./DestinationDetail.css";
 import { DESTINATIONS } from "../data/destinationData";
@@ -46,6 +47,14 @@ export default function DestinationDetail() {
 
   return (
     <div className="destination-page">
+      <SEO
+        title={`${destination.name} - Calvera Travels`}
+        description={destination.tagline || destination.description}
+        name="Calvera Travels"
+        type="article"
+        image={destination.image}
+        url={`https://calveratravels.com/destination/${destination.slug}`}
+      />
       {/* Breadcrumbs */}
       <nav className="crumbs container">
         <Link to="/" className="crumb">Home</Link>

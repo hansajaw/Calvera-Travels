@@ -4,7 +4,7 @@
 
 /* === PAGE === */
 .tours-page {
-  background: linear-gradient(135deg, #22404a 0%, #1a3238 100%);
+  background: linear-gradient(135deg, #e8c697 0%, #ea8f32 100%);
   min-height: 100vh;
   position: relative;
   overflow-x: hidden;
@@ -41,7 +41,7 @@ body:not(.popup-active) header {
   text-align: center;
   font-size: 3.5rem;
   font-weight: 700;
-  color: #f6ead3;
+  color: 2b3e4b;
   margin-bottom: 80px;
   letter-spacing: -1px;
   text-transform: uppercase;
@@ -55,7 +55,7 @@ body:not(.popup-active) header {
   transform: translateX(-50%);
   width: 100px;
   height: 4px;
-  background: linear-gradient(90deg, transparent, #ea8f32, transparent);
+  background: linear-gradient(90deg, transparent, #5b3a29, transparent);
   border-radius: 2px;
 }
 
@@ -72,9 +72,9 @@ body:not(.popup-active) header {
   border-radius: 24px;
   overflow: hidden;
   border: 1px solid rgba(197, 190, 161, 0.15);
-  backdrop-filter: blur(10px);
   transition: all 0.35s ease;
   position: relative;
+  background-color: #F5F5DC;
 }
 .package-card:hover {
   transform: translateY(-10px);
@@ -104,7 +104,7 @@ body:not(.popup-active) header {
   position: absolute;
   top: 24px;
   right: 24px;
-  background: linear-gradient(135deg, #ea8f32, #d67820);
+  background: linear-gradient(135deg, #e89a38, #d67820);
   color: #22404a;
   padding: 10px 22px;
   border-radius: 50px;
@@ -121,7 +121,7 @@ body:not(.popup-active) header {
 .package-info h3 {
   font-size: 1.8rem;
   font-weight: 700;
-  color: #f6ead3;
+  color: #2b3e4b;
   margin-bottom: 16px;
   transition: color 0.3s ease;
 }
@@ -129,7 +129,7 @@ body:not(.popup-active) header {
   color: #ea8f32;
 }
 .package-info > p {
-  color: #e2d8c6;
+  color: #1e3234;
   line-height: 1.7;
   margin-bottom: 20px;
   font-size: 1rem;
@@ -180,14 +180,14 @@ body:not(.popup-active) header {
   align-items: center;
   justify-content: center;
   padding: 40px;
-  background: rgba(34, 64, 74, 0.96);
+  background: rgba(248,240,21 0.96);
   backdrop-filter: blur(10px);
   overflow-y: auto;
 }
 
 /* ========= POPUP CONTAINER ========= */
 .popup-content {
-  background: linear-gradient(135deg, #22404a, #1a3238);
+  background: linear-gradient(135deg, #f5f5dc, #e8c697);
   border: 2px solid rgba(197, 190, 161, 0.2);
   border-radius: 30px;
   max-width: 900px;
@@ -282,7 +282,7 @@ body:not(.popup-active) header {
 .popup-body,
 .scrollable-popup {
   padding: 40px 50px;
-  color: #f6ead3;
+  color: #5b3a29;
   flex: 1 1 auto;
   min-height: 0;
   overflow-y: auto;
@@ -295,7 +295,7 @@ body:not(.popup-active) header {
 
 .popup-body::-webkit-scrollbar-thumb,
 .scrollable-popup::-webkit-scrollbar-thumb {
-  background: linear-gradient(180deg, #ea8f32, #d67820);
+  background: linear-gradient(180deg, #e89a38, #ffd8a6);
   border-radius: 10px;
 }
 
@@ -313,17 +313,17 @@ body:not(.popup-active) header {
   gap: 14px;
 }
 .popup-details li {
-  background: rgba(197, 190, 161, 0.1);
+  background: rgba(248,240,21 0.1);
   padding: 12px 20px;
   border-left: 4px solid #ea8f32;
   border-radius: 10px;
-  color: #f7f0e5;
+  color: #2b3e4b;
 }
 
 /* Summary & Highlights */
 .popup-summary h3,
 .popup-highlights h3 {
-  color: #ffb56e;
+  color: #2b3e4b;
   margin-bottom: 18px;
   font-size: 1.6rem;
   text-transform: uppercase;
@@ -331,7 +331,7 @@ body:not(.popup-active) header {
 }
 .popup-summary p,
 .popup-highlights li {
-  color: #f6ead3;
+  color: #2b3e4b;
   line-height: 1.75;
 }
 .popup-highlights ul { 
@@ -348,7 +348,7 @@ body:not(.popup-active) header {
 
 /* Thank-you styles */
 .ty-title {
-  color: #ffb56e;
+  color: #e89a38;
   font-size: 2rem;
   margin-bottom: 12px;
   display: flex;
@@ -357,7 +357,7 @@ body:not(.popup-active) header {
   justify-content: center;
 }
 .ty-text { 
-  color: #f6ead3; 
+  color: #2b3e4b; 
   line-height: 1.65; 
   margin-bottom: 26px; 
 }
@@ -374,7 +374,7 @@ body:not(.popup-active) header {
   font-weight: 800;
   letter-spacing: .3px;
   text-transform: uppercase;
-  color: #ffb56e;
+  color: #2b3e4b;
 }
 
 .booking-form {
@@ -401,7 +401,7 @@ body:not(.popup-active) header {
 .booking-form label {
   font-weight: 700;
   font-size: 0.98rem;
-  color: #ffffff !important;
+  color: #2b3e4b !important;
   opacity: 1 !important;
 }
 
@@ -413,7 +413,7 @@ body:not(.popup-active) header {
   background: rgba(255, 255, 255, 0.1) !important;
   border: 1px solid rgba(233,214,182,0.38);
   border-radius: 10px;
-  color: #ffffff !important;
+  color: #2b3e4b !important;
   font-size: 1rem;
   outline: none;
   transition: all 0.2s ease;
@@ -462,7 +462,7 @@ body:not(.popup-active) header {
 }
 
 .btn-primary {
-  background: linear-gradient(135deg, #ea8f32, #d67820);
+  background: linear-gradient(135deg, #2b3e4b, #1e3234);
   color: #1c2f35;
 }
 

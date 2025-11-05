@@ -6,36 +6,24 @@ import {
   FaSearch,
   FaBars,
   FaTimes,
-  FaSun,
-  FaMoon,
 } from "react-icons/fa";
 import { Link, useLocation } from "react-router-dom";
 import SearchModal from "./SearchModal";
-import logo from "../assets/LOGO.jpg";
+import logo from "../assets/Without Text.png";
 
 export default function Header() {
   const location = useLocation();
 
   const [menuOpen, setMenuOpen] = useState(false);
-  const [dark, setDark] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
+  const [headerScrolled, setHeaderScrolled] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
-  const [searchQuery, setSearchQuery] = useState(""); // kept for the inline search form (if you keep it)
   const [showTopBar, setShowTopBar] = useState(true);
 
-  // theme boot
-  useEffect(() => {
-    const saved = localStorage.getItem("theme");
-    const isDark = saved ? saved === "dark" : window.matchMedia?.("(prefers-color-scheme: dark)")?.matches;
-    setDark(isDark);
-    document.body.setAttribute("data-theme", isDark ? "dark" : "light");
-  }, []);
-
-  // scroll reactions (solid header + hide top bar)
+  // Handle scroll JUST for header
   useEffect(() => {
     const onScroll = () => {
-      const passed = window.scrollY > 60;
-      setScrolled(passed);
+      const passed = window.scrollY > 40;
+      setHeaderScrolled(passed);
       setShowTopBar(!passed);
     };
     onScroll();
@@ -43,13 +31,13 @@ export default function Header() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  // close menus / search when route changes
+  // Close menus on route change
   useEffect(() => {
     setMenuOpen(false);
     setSearchOpen(false);
   }, [location.pathname]);
 
-  // lock body scroll when mobile menu open
+  // Lock body scroll when mobile menu open
   useEffect(() => {
     document.body.style.overflow = menuOpen ? "hidden" : "";
     return () => {
@@ -57,193 +45,182 @@ export default function Header() {
     };
   }, [menuOpen]);
 
-  // close on ESC for menu
+  // Close menu/search on ESC
   useEffect(() => {
     const onKey = (e) => {
       if (e.key === "Escape") {
         setMenuOpen(false);
+        setSearchOpen(false);
       }
     };
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
   }, []);
 
-  const toggleTheme = () => {
-    const next = !dark;
-    setDark(next);
-    document.body.setAttribute("data-theme", next ? "dark" : "light");
-    localStorage.setItem("theme", next ? "dark" : "light");
-  };
-
-  const handleSearchSubmit = (e) => {
-    e.preventDefault();
-    // keeping this in case you still want the inline bar; the real “page-wide” search lives in SearchModal
-    if (searchQuery.trim()) {
-      // you could open SearchModal prefilled instead:
-      setSearchOpen(true);
-      // and clear the inline input:
-      setSearchQuery("");
-    }
-  };
-
   const navIsActive = (path) =>
     location.pathname === path ||
-    (path === "/" && (location.pathname === "/" || location.pathname.toLowerCase() === "/home"));
+    (path === "/" &&
+      (location.pathname === "/" ||
+        location.pathname.toLowerCase() === "/home"));
 
   return (
     <>
-      <header className={`hdr ${scrolled ? "scrolled" : ""}`}>
-        {/* === Top Bar (hidden while scrolled) === */}
+      <header className={`hdr ${headerScrolled ? "scrolled" : ""}`}>
+        {/* Top Bar */}
         <div className={`hdr-top ${showTopBar ? "show" : "hide"}`}>
           <div className="hdr-top__inner">
             <div className="hdr-top__contact">
-              <FaEnvelope />
               <a href="mailto:inquiries@calveratravels.com">
+                <FaEnvelope />
                 inquiries@calveratravels.com
               </a>
               <span className="sep">|</span>
-              <FaPhoneAlt />
-              <a href="tel:+94 76 191 5100">Call Us</a>
+              <a href="tel:+94761915100">
+                <FaPhoneAlt />
+                +94 76 191 5100
+              </a>
             </div>
           </div>
         </div>
 
-        {/* === Navigation === */}
-        <nav className="hdr-nav" role="navigation" aria-label="Primary">
+        {/* Main Navigation */}
+        <nav className="hdr-nav">
           <div className="hdr-nav__inner">
             {/* Logo */}
             <div className="hdr-logo">
-              <Link to="/" aria-label="Calvera Travels - Home">
+              <Link to="/" aria-label="Calvera Travels">
                 <img src={logo} alt="Calvera Travels" />
               </Link>
             </div>
 
-            {/* Center Links */}
-            <ul className="hdr-links" role="menubar">
-              <li role="none">
-                <Link role="menuitem" to="/" className={navIsActive("/") ? "active" : ""}>
+            {/* Navigation Links */}
+            <ul className="hdr-links">
+              <li>
+                <Link to="/" className={navIsActive("/") ? "active" : ""}>
                   Home
                 </Link>
               </li>
-              <li role="none">
-                <Link role="menuitem" to="/AboutUs" className={navIsActive("/AboutUs") ? "active" : ""}>
-                  About Us
+              <li>
+                <Link
+                  to="/AboutUs"
+                  className={navIsActive("/AboutUs") ? "active" : ""}
+                >
+                  About
                 </Link>
               </li>
-              <li role="none">
-                <Link role="menuitem" to="/Tours" className={navIsActive("/Tours") ? "active" : ""}>
+              <li>
+                <Link
+                  to="/Tours"
+                  className={navIsActive("/Tours") ? "active" : ""}
+                >
                   Tours
                 </Link>
               </li>
-              <li role="none">
-                <Link role="menuitem" to="/Destination" className={navIsActive("/Destination") ? "active" : ""}>
+              <li>
+                <Link
+                  to="/Destination"
+                  className={navIsActive("/Destination") ? "active" : ""}
+                >
                   Destinations
                 </Link>
               </li>
-              <li role="none">
-                <Link role="menuitem" to="/Planyourtrip" className={navIsActive("/Planyourtrip") ? "active" : ""}>
-                  Plan Your Trip
+              <li>
+                <Link
+                  to="/Planyourtrip"
+                  className={navIsActive("/Planyourtrip") ? "active" : ""}
+                >
+                  Plan Trip
                 </Link>
               </li>
-              <li role="none">
-                <Link role="menuitem" to="/blog" className={navIsActive("/blog") ? "active" : ""}>
+              <li>
+                <Link
+                  to="/blog"
+                  className={navIsActive("/blog") ? "active" : ""}
+                >
                   Blog
                 </Link>
               </li>
             </ul>
 
-            {/* Right actions */}
+            {/* Actions */}
             <div className="hdr-actions">
               <button
                 className="icon-btn"
-                aria-label="Search this page"
+                aria-label="Search"
                 onClick={() => setSearchOpen(true)}
               >
                 <FaSearch />
               </button>
 
-              {/* <button
-                className="icon-btn"
-                aria-label="Toggle theme"
-                onClick={toggleTheme}
-                title={dark ? "Switch to light mode" : "Switch to dark mode"}
-              >
-                {dark ? <FaSun /> : <FaMoon />}
-              </button> */}
-
               <button
-                className="icon-btn hdr-burger"
+                className="icon-btn"
                 aria-label="Menu"
-                onClick={() => setMenuOpen((s) => !s)}
-                aria-expanded={menuOpen}
-                aria-controls="hdr-mobile-menu"
+                onClick={() => setMenuOpen(!menuOpen)}
               >
                 {menuOpen ? <FaTimes /> : <FaBars />}
               </button>
             </div>
           </div>
 
-          {/* (Optional) Inline search row — keep or remove.
-              You already have a global modal so this can be hidden in CSS if you prefer. */}
-          {false && (
-            <form className="hdr-search" onSubmit={handleSearchSubmit}>
-              <input
-                type="text"
-                placeholder="Search destinations, tours..."
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-                autoFocus
-              />
-              <button type="submit">Go</button>
-            </form>
-          )}
-
-          {/* Compact dropdown */}
-          <div
-            id="hdr-mobile-menu"
-            className={`hdr-mobile ${menuOpen ? "show" : ""}`}
-            onClick={(e) => {
-              // click outside links closes
-              if (e.target.classList.contains("hdr-mobile")) setMenuOpen(false);
-            }}
-          >
+          {/* Mobile Dropdown */}
+          <div className={`hdr-mobile ${menuOpen ? "show" : ""}`}>
             <ul>
+              <li>
+                <Link to="/" className={navIsActive("/") ? "active" : ""}>
+                  Home
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/AboutUs"
+                  className={navIsActive("/AboutUs") ? "active" : ""}
+                >
+                  About
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/Tours"
+                  className={navIsActive("/Tours") ? "active" : ""}
+                >
+                  Tours
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/Destination"
+                  className={navIsActive("/Destination") ? "active" : ""}
+                >
+                  Destinations
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/Planyourtrip"
+                  className={navIsActive("/Planyourtrip") ? "active" : ""}
+                >
+                  Plan Trip
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/blog"
+                  className={navIsActive("/blog") ? "active" : ""}
+                >
+                  Blog
+                </Link>
+              </li>
               <li>
                 <Link to="/Contact" onClick={() => setMenuOpen(false)}>
                   Contact Us
                 </Link>
               </li>
-              {/* <li>
-                <Link to="/AboutUs" onClick={() => setMenuOpen(false)}>
-                  About Us
-                </Link>
-              </li>
-              <li>
-                <Link to="/Tours" onClick={() => setMenuOpen(false)}>
-                  Tours
-                </Link>
-              </li>
-              <li>
-                <Link to="/Destination" onClick={() => setMenuOpen(false)}>
-                  Destinations
-                </Link>
-              </li>
-              <li>
-                <Link to="/Planyourtrip" onClick={() => setMenuOpen(false)}>
-                  Plan Your Trip
-                </Link>
-              </li>
-              <li>
-                <Link to="/blog" onClick={() => setMenuOpen(false)}>
-                  Blog
-                </Link>
-              </li> */}
             </ul>
           </div>
         </nav>
       </header>
 
-      {/* Page-wide Search Modal */}
+      {/* Search Modal */}
       <SearchModal isOpen={searchOpen} onClose={() => setSearchOpen(false)} />
     </>
   );

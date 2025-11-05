@@ -5,15 +5,8 @@ import './Footer.css';
 const Footer = () => {
     return (
         <footer className="footer">
-            <div className="footer-wave">
-                <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
-                    <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" className="shape-fill"></path>
-                </svg>
-            </div>
-            
             <div className="container">
                 <div className="footer-content">
-                    {/* Brand Section */}
                     <div className="footer-section about">
                         <div className="logo-wrapper">
                             <div className="logo">
@@ -23,14 +16,12 @@ const Footer = () => {
                                     className="logo-img" 
                                 />
                                 <div className="logo-text">
-                                    <h2>CALVERA </h2>
-                                        Travels
+                                    <h2>CALVERA</h2>
+                                    <span>TRAVELS</span>
                                 </div>
                             </div>
                             <p className="tagline">
-                                <i className="fas fa-quote-left"></i>
                                 Jobs fill your pocket, but adventures fill your soul.
-                                <i className="fas fa-quote-right"></i>
                             </p>
                         </div>
                         
@@ -50,13 +41,12 @@ const Footer = () => {
                             <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" aria-label="YouTube">
                                 <i className="fab fa-youtube"></i>
                             </a>
-                             <a href="https://tiktok.com" target="_blank" rel="noopener noreferrer" aria-label="Tiktok">
+                            <a href="https://tiktok.com" target="_blank" rel="noopener noreferrer" aria-label="Tiktok">
                                 <i className="fab fa-tiktok"></i>
                             </a>
                         </div>
                     </div>
 
-                    {/* Navigation Links */}
                     <div className="footer-section links">
                         <h3>
                             <i className="fas fa-compass"></i>
@@ -73,7 +63,6 @@ const Footer = () => {
                         </ul>
                     </div>
 
-                    {/* Quick Links */}
                     <div className="footer-section links">
                         <h3>
                             <i className="fas fa-link"></i>
@@ -86,7 +75,6 @@ const Footer = () => {
                         </ul>
                     </div>
 
-                    {/* Contact Section */}
                     <div className="footer-section contact">
                         <h3>
                             <i className="fas fa-envelope-open-text"></i>
@@ -105,14 +93,10 @@ const Footer = () => {
                                 <i className="fas fa-envelope"></i>
                                 <span>inquiries@calveratravels.com</span>
                             </li>
-                           
                         </ul>
-                        
-                        
                     </div>
                 </div>
 
-                {/* Footer Bottom */}
                 <div className="footer-bottom">
                     <p>&copy; {new Date().getFullYear()} Calvera Travels PVT. All Rights Reserved.</p>
                     <div className="payment-methods">

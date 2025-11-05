@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import SEO from "./SEO";
 import "./contact.css";
 
 const Contact = () => {
@@ -80,6 +81,14 @@ const Contact = () => {
 
   return (
     <div className="contact-page">
+      <SEO
+        title="Contact Calvera Travels - Plan Your Trip to Sri Lanka"
+        description="Get in touch with Calvera Travels to plan your perfect Sri Lankan journey. Contact us for inquiries, bookings, and personalized travel advice. We're here to help!"
+        name="Calvera Travels"
+        type="website"
+        image={`${process.env.PUBLIC_URL}/images/og-image-contact.jpg`}
+        url="https://calveratravels.com/contact"
+      />
       <header className="contact-header">
         <span className="badge">Contact</span>
         <h1>Let’s Plan Your Next Trip</h1>

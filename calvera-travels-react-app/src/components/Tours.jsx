@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import SEO from "./SEO";
 import Hero from "./Hero";
 import "./Tours.css";
 
@@ -347,6 +348,14 @@ const Tours = () => {
 
   return (
     <div className="tours-page">
+      <SEO
+        title="Sri Lanka Tour Packages - Calvera Travels"
+        description="Explore our handcrafted tour packages for Sri Lanka. From cultural tours to wildlife adventures and romantic getaways, we have the perfect itinerary for your dream vacation."
+        name="Calvera Travels"
+        type="website"
+        image={`${process.env.PUBLIC_URL}/images/og-image-tours.jpg`}
+        url="https://calveratravels.com/tours"
+      />
       <Hero
         images={toursHeroImages}
         title="Our Tours"

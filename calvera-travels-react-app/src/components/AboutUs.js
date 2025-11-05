@@ -1,89 +1,39 @@
-import React, { useState, useEffect } from "react";
-import { motion, useScroll, useSpring } from "framer-motion";
+import React from "react";
+import SEO from "./SEO";
+import Hero from "./Hero";
 import "./About.css";
 
 const AboutUs = () => {
-  const [currentHeroImage, setCurrentHeroImage] = useState(0);
-
-  const heroImages = [
+  // Use the same rotating-hero behavior via <Hero />
+  const aboutHeroImages = [
     "/images/AboutUs/AHEROback/aboutback.jpg",
     "/images/AboutUs/AHEROback/Aheroback2.jpg",
     "/images/AboutUs/AHEROback/Aheroback3.jpg",
   ];
 
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentHeroImage((prev) => (prev + 1) % heroImages.length);
-    }, 5000);
-    return () => clearInterval(interval);
-  }, [heroImages.length]);
-
-  // ===== Scroll progress indicator (top thin bar) =====
-  const { scrollYProgress } = useScroll();
-  const scaleX = useSpring(scrollYProgress, {
-    stiffness: 110,
-    damping: 28,
-    restDelta: 0.001,
-  });
-
-  // Hide bottom cue after user scrolls a bit
-  const [showCue, setShowCue] = useState(true);
-  useEffect(() => {
-    const onScroll = () => setShowCue(window.scrollY < 120);
-    onScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
-
   return (
     <div className="about-page">
-      {/* ===== Fixed top scroll progress ===== */}
-      <motion.div className="scroll-progress-bar" style={{ scaleX }} />
+      <SEO
+        title="About Calvera Travels - Our Story and Promise"
+        description="Learn about Calvera Travels, our passion for crafting unforgettable journeys, and our commitment to providing personalized, authentic, and reliable travel experiences in Sri Lanka."
+        name="Calvera Travels"
+        type="website"
+        image={`${process.env.PUBLIC_URL}/images/og-image-about.jpg`}
+        url="https://calveratravels.com/about"
+      />
 
-      {/* ===== HERO SECTION ===== */}
-      <section className="hero-section">
-        <div
-          className="hero-bg"
-          style={{ backgroundImage: `url(${heroImages[currentHeroImage]})` }}
-        >
-          <div className="hero-overlay" />
-          <motion.div
-            className="hero-content"
-            initial={{ opacity: 0, y: 50 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1 }}
-          >
-            <span className="hero-badge">
-              <i className="fas fa-users" aria-hidden="true"></i> Story & Spirit
-            </span>
-            <h1>About Calvera Travels</h1>
-            <p>Crafting unforgettable journeys with passion and expertise.</p>
-
-            <div className="hero-stats">
-              <div>
-                <h3>Tours</h3>
-                <p>Curated for You</p>
-              </div>
-              <div>
-                <h3>Team</h3>
-                <p>Travel Enthusiasts</p>
-              </div>
-              <div>
-                <h3>20+</h3>
-                <p>Destinations</p>
-              </div>
-            </div>
-          </motion.div>
-
-          {/* ===== Bottom scroll cue (bouncing chevron) ===== */}
-          {showCue && (
-            <div className="hero-scroll-cue" aria-hidden="true">
-              <span className="cue-label">Scroll</span>
-              <i className="fas fa-chevron-down" />
-            </div>
-          )}
-        </div>
-      </section>
+      {/* ===== HERO (same style/behavior as Tours) ===== */}
+      <Hero
+        images={aboutHeroImages}
+        title="About Calvera Travels"
+        highlightText="Story & Spirit"
+        subtitle="Crafting unforgettable journeys with passion and expertise."
+        badge="Who We Are"
+        primaryButton={{ text: "Our Promise", link: "#our-promise", icon: "fa-heart" }}
+        secondaryButton={{ text: "Contact Us", link: "/contact", icon: "fa-phone" }}
+        showFeatures
+        showScrollIndicator
+      />
 
       {/* ===== WELCOME SECTION ===== */}
       <section
@@ -93,12 +43,7 @@ const AboutUs = () => {
         }}
       >
         <div className="overlay"></div>
-        <motion.div
-          className="welcome-content glass-card"
-          initial={{ opacity: 0, y: 80 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-        >
+        <div className="welcome-content glass-card">
           <h2>Welcome to Calvera Travel</h2>
           <p>
             At Calvera, we believe every journey is crafted with passion,
@@ -112,7 +57,7 @@ const AboutUs = () => {
             Whether you seek a relaxing beach escape, a cultural adventure, or a
             luxury honeymoon, our team ensures every detail is handled with care.
           </p>
-        </motion.div>
+        </div>
       </section>
 
       {/* ===== WHAT WE DO SECTION ===== */}
@@ -121,12 +66,7 @@ const AboutUs = () => {
         style={{ backgroundImage: "url('/images/AboutUs/Awhatwedoback/AWWDO.jpg')" }}
       >
         <div className="overlay"></div>
-        <motion.div
-          className="whatwedo-content"
-          initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1 }}
-        >
+        <div className="whatwedo-content">
           <h2>What We Do</h2>
           <p>
             At Calvera, we specialize in custom-designed travel experiences that
@@ -158,21 +98,17 @@ const AboutUs = () => {
             We combine local knowledge with global standards to bring you
             experiences that are authentic, safe, and unforgettable.
           </p>
-        </motion.div>
+        </div>
       </section>
 
       {/* ===== OUR PROMISE SECTION ===== */}
       <section
+        id="our-promise"
         className="our-promise-section"
         style={{ backgroundImage: "url('/images/AboutUs/Aourpromiseback/Apromiseback.jpg')" }}
       >
         <div className="overlay"></div>
-        <motion.div
-          className="ourpromise-content"
-          initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1 }}
-        >
+        <div className="ourpromise-content">
           <h2>Our Promise</h2>
           <p>
             To deliver journeys filled with trust, comfort, and inspiration. We
@@ -188,7 +124,7 @@ const AboutUs = () => {
               Help you discover the soul of each place with confidence and care.
             </li>
           </ul>
-        </motion.div>
+        </div>
       </section>
 
       {/* ===== CALVERA MEANING SECTION ===== */}
@@ -197,12 +133,7 @@ const AboutUs = () => {
         style={{ backgroundImage: "url('/images/AboutUs/Awhychose/AWCCT.jpg')" }}
       >
         <div className="overlay"></div>
-        <motion.div
-          className="calvera-content"
-          initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1 }}
-        >
+        <div className="calvera-content">
           <h2>Meaning of CALVERA</h2>
           <ul>
             <li>
@@ -233,7 +164,7 @@ const AboutUs = () => {
               real stories and tradition.
             </li>
           </ul>
-        </motion.div>
+        </div>
       </section>
 
       {/* ===== WHY CHOOSE SECTION ===== */}
@@ -242,12 +173,7 @@ const AboutUs = () => {
         style={{ backgroundImage: "url('/images/AboutUs/aboutus back/ABUSBAK2.jpg')" }}
       >
         <div className="overlay"></div>
-        <motion.div
-          className="why-choose-content"
-          initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1 }}
-        >
+        <div className="why-choose-content">
           <h2>Why Choose Calvera Travel</h2>
           <ul>
             <li>Professional, experienced travel planners.</li>
@@ -261,7 +187,7 @@ const AboutUs = () => {
             We don’t just take you places — we help you experience them in ways
             you’ll never forget.
           </p>
-        </motion.div>
+        </div>
       </section>
     </div>
   );

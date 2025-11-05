@@ -1,7 +1,7 @@
 export const DESTINATIONS = [
   {
     id: 1,
-    name: "Anuradhapura, Sri Lanka",
+    name: "Anuradhapura",
     slug: "anuradhapura-sri-lanka",
     region: "asia",
     short: "Sri Lanka’s sacred ancient capital filled with stupas, monasteries, and timeless spirituality.",
@@ -68,7 +68,7 @@ export const DESTINATIONS = [
 
   {
     id: 2,
-    name: "Negombo, Sri Lanka",
+    name: "Negombo",
     slug: "negombo-sri-lanka",
     region: "asia",
     short: "A lively seaside town blending beaches, canals, and colonial charm.",
@@ -135,7 +135,7 @@ export const DESTINATIONS = [
 
   {
     id: 3,
-    name: "Colombo, Sri Lanka",
+    name: "Colombo",
     slug: "colombo-sri-lanka",
     region: "asia",
     short: "Sri Lanka’s cosmopolitan capital where old meets new in perfect rhythm.",
@@ -202,7 +202,7 @@ export const DESTINATIONS = [
 
   {
     id: 4,
-    name: "Sigiriya, Sri Lanka",
+    name: "Sigiriya",
     slug: "sigiriya-sri-lanka",
     region: "asia",
     short: "An ancient rock fortress soaring above forests and royal gardens.",
@@ -269,7 +269,7 @@ export const DESTINATIONS = [
 
   {
     id: 5,
-    name: "Galle, Sri Lanka",
+    name: "Galle",
     slug: "galle-sri-lanka",
     region: "asia",
     short: "A UNESCO-listed coastal fort city rich with history and seaside charm.",
@@ -336,7 +336,7 @@ export const DESTINATIONS = [
 
   {
     id: 6,
-    name: "Kandy, Sri Lanka",
+    name: "Kandy",
     slug: "kandy-sri-lanka",
     region: "asia",
     short: "The hill capital of Sri Lanka where culture, faith, and nature meet.",
@@ -403,7 +403,7 @@ export const DESTINATIONS = [
 
   {
     id: 7,
-    name: "Mirissa, Sri Lanka",
+    name: "Mirissa",
     slug: "mirissa-sri-lanka",
     region: "asia",
     short: "A tropical paradise of golden beaches and gentle waves.",
@@ -470,7 +470,7 @@ export const DESTINATIONS = [
 
   {
     id: 8,
-    name: "Polonnaruwa, Sri Lanka",
+    name: "Polonnaruwa",
     slug: "polonnaruwa-sri-lanka",
     region: "asia",
     short: "An ancient royal capital filled with ruins and timeless stone art.",
@@ -537,7 +537,7 @@ export const DESTINATIONS = [
 
   {
     id: 9,
-    name: "Pasikuda, Sri Lanka",
+    name: "Pasikuda",
     slug: "pasikuda-sri-lanka",
     region: "asia",
     short: "A calm east-coast bay with crystal-clear shallows and coral reefs.",
@@ -604,7 +604,7 @@ export const DESTINATIONS = [
 
   {
     id: 10,
-    name: "Arugam Bay, Sri Lanka",
+    name: "Arugam Bay",
     slug: "arugam-bay-sri-lanka",
     region: "asia",
     short: "A surfer’s paradise with golden sands and laid-back charm.",
@@ -671,7 +671,7 @@ export const DESTINATIONS = [
 
   {
     id: 11,
-    name: "Kalpitiya, Sri Lanka",
+    name: "Kalpitiya",
     slug: "kalpitiya-sri-lanka",
     region: "asia",
     short: "A windy peninsula known for dolphins, kitesurfing, and lagoons.",
@@ -738,7 +738,7 @@ export const DESTINATIONS = [
 
   {
     id: 12,
-    name: "Nuwara Eliya, Sri Lanka",
+    name: "Nuwara Eliya",
     slug: "nuwara-eliya-sri-lanka",
     region: "asia",
     short: "Sri Lanka’s ‘Little England’ — tea country wrapped in misty hills.",
@@ -805,7 +805,7 @@ export const DESTINATIONS = [
 
   {
     id: 13,
-    name: "Jaffna, Sri Lanka",
+    name: "Jaffna",
     slug: "jaffna-sri-lanka",
     region: "asia",
     short: "A northern cultural hub of temples, islands, and resilient heritage.",
@@ -872,7 +872,7 @@ export const DESTINATIONS = [
 
   {
     id: 14,
-    name: "Dambulla, Sri Lanka",
+    name: "Dambulla",
     slug: "dambulla-sri-lanka",
     region: "asia",
     short: "A rock-temple complex filled with ancient murals and Buddha statues.",
@@ -939,7 +939,7 @@ export const DESTINATIONS = [
 
   {
     id: 15,
-    name: "Sinharaja, Sri Lanka",
+    name: "Sinharaja",
     slug: "sinharaja-sri-lanka",
     region: "asia",
     short: "Sri Lanka’s last primary rainforest — a living ark of biodiversity.",
@@ -1006,7 +1006,7 @@ export const DESTINATIONS = [
 
   {
     id: 16,
-    name: "Tangalle, Sri Lanka",
+    name: "Tangalle",
     slug: "tangalle",
     region: "asia",
     short: "A tranquil coastal haven of golden beaches, sea turtles, and sun-drenched serenity.",
@@ -1073,7 +1073,7 @@ export const DESTINATIONS = [
 
   {
     id: 17,
-    name: "Ella, Sri Lanka",
+    name: "Ella",
     slug: "ella-sri-lanka",
     region: "asia",
     short: "A misty mountain village famous for hiking, waterfalls, and views.",
@@ -1140,7 +1140,7 @@ export const DESTINATIONS = [
 
   {
     id: 18,
-    name: "Udawalawe, Sri Lanka",
+    name: "Udawalawe",
     slug: "udawalawe-sri-lanka",
     region: "asia",
     short: "A scenic savannah park famous for its large elephant herds, open grasslands, and peaceful wildlife safaris.",
@@ -1207,7 +1207,7 @@ export const DESTINATIONS = [
 
   {
     id: 19,
-    name: "Yala, Sri Lanka",
+    name: "Yala",
     slug: "yala-sri-lanka",
     region: "asia",
     short: "Sri Lanka’s premier wildlife park — home to leopards and elephants.",
@@ -1274,7 +1274,7 @@ export const DESTINATIONS = [
 
   {
     id: 20,
-    name: "Trincomalee, Sri Lanka",
+    name: "Trincomalee",
     slug: "trincomalee-sri-lanka",
     region: "asia",
     short: "A natural harbor city with temples, beaches, and marine wonders.",

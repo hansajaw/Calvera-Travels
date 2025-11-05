@@ -1,4 +1,5 @@
 import React, { useRef, useState, useEffect } from "react";
+import SEO from "./SEO";
 import { Link } from "react-router-dom";
 import { Fade } from "react-awesome-reveal";
 import Hero from "./Hero";
@@ -83,6 +84,14 @@ const Home = () => {
 
   return (
     <>
+      <SEO
+        title="Calvera Travels - Your Gateway to Sri Lanka"
+        description="Discover the beauty of Sri Lanka with Calvera Travels. We offer personalized tours, cultural experiences, and unforgettable adventures. Plan your dream vacation today!"
+        name="Calvera Travels"
+        type="website"
+        image={`${process.env.PUBLIC_URL}/images/og-image.jpg`}
+        url="https://calveratravels.com"
+      />
       <Hero />
 
       {/* =========== WELCOME SECTION =========== */}

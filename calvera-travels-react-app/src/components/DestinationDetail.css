@@ -285,7 +285,7 @@
   color: var(--orange);
 }
 
-.info-card h3 { margin: 6px 0 2px; font-size: .92rem; color: #6c7a81; letter-spacing: .06em; text-transform: uppercase; }
+.info-card h3 { margin: 6px 0 2px; font-size: .92rem; color: #E8C697; letter-spacing: .06em; text-transform: uppercase; }
 .info-card p { margin: 0; font-weight: 900; color: var(--orange); }
 
 /* ===== Gallery ===== */

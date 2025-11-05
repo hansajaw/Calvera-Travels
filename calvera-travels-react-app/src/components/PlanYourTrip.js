@@ -6,9 +6,7 @@ import tourPackages from "../data/tourPackages";
 const PlanYourTrip = () => {
   const [isSubmitted, setIsSubmitted] = useState(false);
 
-  const API_BASE_URL = process.env.NODE_ENV === 'production'
-    ? 'https://clavera-ueqs.vercel.app/api/v1'
-    : 'http://localhost:4000/api/v1';
+  const API_BASE_URL = process.env.REACT_APP_API_URL || 'http://localhost:4000/api/v1';
     
   const heroImages = [
     "/images/Planyortrip/PYTBack1.jpg",

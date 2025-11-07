@@ -1,12 +1,9 @@
 {
   "version": 2,
-  "framework": "create-react-app",
-  "headers": [
-    {
-      "source": "/(.*)\\.(js|css|png|jpg|jpeg|gif|svg|webp|ico)",
-      "headers": [
-        { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }
-      ]
-    }
+  "builds": [
+    { "src": "package.json", "use": "@vercel/static-build" }
+  ],
+  "routes": [
+    { "src": "/(.*)", "dest": "/index.html" }
   ]
 }

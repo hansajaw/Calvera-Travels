@@ -5,16 +5,19 @@ const CTA = () => {
   const [email, setEmail] = useState("");
   const [submitted, setSubmitted] = useState(false);
 
-  // ✅ Automatically use production backend on Vercel
-  const API_BASE_URL = process.env.REACT_APP_API_URL || 'http://localhost:4000/api/v1';
-
+  // ✅ Automatically detect correct API base URL
+  const API_BASE_URL =
+    process.env.REACT_APP_API_URL ||
+    (window.location.hostname.includes("localhost")
+      ? "http://localhost:4000/api/v1"
+      : "https://calvera-travels-tt5v.vercel.app/api/v1");
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!email.trim()) return;
 
-    console.log("API_BASE_URL:", API_BASE_URL);
-    console.log("Fetching URL:", `${API_BASE_URL}/newsletter/subscribe`);
+    console.log("🌍 Using API_BASE_URL:", API_BASE_URL);
+    console.log("📡 Sending POST to:", `${API_BASE_URL}/newsletter/subscribe`);
 
     try {
       const res = await fetch(`${API_BASE_URL}/newsletter/subscribe`, {
@@ -23,9 +26,9 @@ const CTA = () => {
         body: JSON.stringify({ email }),
       });
 
-      const data = await res.json();
-      console.log("Response status:", res.status);
-      console.log("Response data:", data);
+      const data = await res.json().catch(() => ({})); // Safe JSON parse
+      console.log("✅ Response status:", res.status);
+      console.log("✅ Response data:", data);
 
       if (res.ok) {
         setSubmitted(true);
@@ -34,11 +37,16 @@ const CTA = () => {
           setSubmitted(false);
         }, 5000);
       } else {
-        alert(data.message || "⚠️ Subscription failed. Please try again.");
+        alert(
+          data.message ||
+            "⚠️ Subscription failed. Please check your email and try again."
+        );
       }
     } catch (err) {
-      console.error("❌ Network error:", err);
-      alert("Could not connect to the server. Please try again later.");
+      console.error("❌ Network or CORS error:", err);
+      alert(
+        "Could not connect to our server. Please try again in a moment or check your network connection."
+      );
     }
   };
 

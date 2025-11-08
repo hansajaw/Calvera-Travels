@@ -24,7 +24,7 @@ export default function FloatingChats() {
   }, []);
 
   const handleWhatsApp = () => {
-    const whatsappNumber = "94771234567"; // your number here
+    const whatsappNumber = "94766495100"; 
     const message = encodeURIComponent("Hi Calvera Travels! I'd like to learn more about your tours.");
     window.open(`https://wa.me/${whatsappNumber}?text=${message}`, "_blank");
   };

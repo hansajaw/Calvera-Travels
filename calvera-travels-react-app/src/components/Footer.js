@@ -26,22 +26,22 @@ const Footer = () => {
                         </div>
                         
                         <div className="social-icons">
-                            <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+                            <a href="https://web.facebook.com/calveratravels/" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
                                 <i className="fab fa-facebook-f"></i>
                             </a>
-                            <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+                            <a href="https://www.instagram.com/calvera_travels_/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
                                 <i className="fab fa-instagram"></i>
                             </a>
-                            <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" aria-label="Twitter">
+                            <a href="https://x.com/Calveratravel" target="_blank" rel="noopener noreferrer" aria-label="X/Twitter">
                                 <i className="fab fa-twitter"></i>
                             </a>
-                            <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+                            <a href="https://www.linkedin.com/company/calvera-travels-pvt-ltd/?viewAsMember=true" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
                                 <i className="fab fa-linkedin-in"></i>
                             </a>
-                            <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" aria-label="YouTube">
+                            <a href="https://www.youtube.com/@CalveraTravels" target="_blank" rel="noopener noreferrer" aria-label="YouTube">
                                 <i className="fab fa-youtube"></i>
                             </a>
-                            <a href="https://tiktok.com" target="_blank" rel="noopener noreferrer" aria-label="Tiktok">
+                            <a href="https://www.tiktok.com/@calveratravels" target="_blank" rel="noopener noreferrer" aria-label="Tiktok">
                                 <i className="fab fa-tiktok"></i>
                             </a>
                         </div>

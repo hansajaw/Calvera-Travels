@@ -1,17 +1,18 @@
+// src/config/mailer.js
 import nodemailer from "nodemailer";
 
 export function createTransport() {
   const { MAIL_HOST, MAIL_PORT, MAIL_USER, MAIL_PASS } = process.env;
 
   if (!MAIL_HOST || !MAIL_USER || !MAIL_PASS) {
-    console.warn("⚠️ Missing mail credentials, skipping SMTP setup");
+    console.warn("⚠️ Missing mail credentials — SMTP disabled");
     return null;
   }
 
   return nodemailer.createTransport({
     host: MAIL_HOST,
     port: Number(MAIL_PORT) || 587,
-    secure: Number(MAIL_PORT) === 465,
+    secure: Number(MAIL_PORT) === 465, // SSL only for 465
     auth: { user: MAIL_USER, pass: MAIL_PASS },
   });
 }

@@ -1,4 +1,4 @@
-import Subscriber from "../models/Subscriber.js";
+import Subscriber from "../models/Subscribe.js";
 import nodemailer from "nodemailer";
 
 /**

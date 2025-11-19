@@ -87,7 +87,7 @@ const Footer = () => {
                             </li>
                             <li>
                                 <i className="fas fa-phone"></i>
-                                <span>+94 77 123 4567</span>
+                                <span>+94 76 191 5100</span>
                             </li>
                             <li>
                                 <i className="fas fa-envelope"></i>

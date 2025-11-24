@@ -5,9 +5,9 @@ export const DESTINATIONS = [
     slug: "anuradhapura-sri-lanka",
     region: "asia",
     short: "Sri Lanka’s sacred ancient capital filled with stupas, monasteries, and timeless spirituality.",
-    image: "/images/destinations/Anuradhapura/anuradhapura.jpg",
+    image: "/images/Destinations/Anuradhapura/anuradhapura.jpg",
     images: [
-      "/images/destinations/Anuradhapura/Isuru muniya.jpg",
+      "/images/Destinations/Anuradhapura/Isuru muniya.jpg",
       "/images/Destinations/Anuradhapura/Jaya Sri Mahabodiaya.jpg",
       "/images/Destinations/Anuradhapura/Ruwanwelisieya.jpg",
     ],

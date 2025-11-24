@@ -15,36 +15,49 @@ function slugify(text = "") {
 
 const Home = () => {
   // === Tour packages (same data, no scroll stuff needed) ===
-  const scrollBarTourPackages = [
-    {
-      id: 1,
-      image: `${process.env.PUBLIC_URL}/images/Tours/Calvera%20pakage/Calvera%20Cultuer/sri-lanka-2726044.jpg`,
-      title: "Cultural Wonders of Kandy",
-      description: "Explore the heart of Sri Lanka’s cultural triangle.",
-      price: "$850",
-    },
-    {
-      id: 2,
-      image: `${process.env.PUBLIC_URL}/images/Tours/Calvera pakage/Calvera Coastal Bliss (Leisure & Beach Relaxation/filipp-nekhaev-Ycnt8BKlMtY-unsplash.jpg`,
-      title: "Galle & Southern Coast",
-      description: "Discover colonial charm and pristine beaches.",
-      price: "$920",
-    },
-    {
-      id: 3,
-      image: `${process.env.PUBLIC_URL}/images/Tours/Calvera%20pakage/Calvera%20Signature/etienne-boulanger-C5yfbvMWxC8-unsplash.jpg`,
-      title: "Misty Mountains of Ella",
-      description: "Hike through tea plantations and scenic views.",
-      price: "$780",
-    },
-    {
-      id: 4,
-      image: `${process.env.PUBLIC_URL}/images/Tours/Calvera%20pakage/Calvera%20Wild/female-tourists-hand-have-happy-travel-map.jpg`,
-      title: "Wildlife Safari in Yala",
-      description: "Encounter leopards and elephants in their habitat.",
-      price: "$1100",
-    },
-  ];
+const scrollBarTourPackages = [
+  {
+    id: 1,
+    image: `${process.env.PUBLIC_URL}/images/Tours/Calvera%20pakage/Calvera%20Honeymoon/Calvera%20Hoooneymoon.jpg`,
+    title: "Calvera Romantic Escape",
+    description:
+      "Romantic 8-day honeymoon through Sri Lanka’s most scenic and intimate locations.",
+    price: "USD 1,820 per person",
+  },
+  {
+    id: 2,
+    image: `${process.env.PUBLIC_URL}/images/Tours/Calvera%20pakage/Calvera%20Cultuer/dance-6983578.jpg`,
+    title: "Calvera Cultural Essence",
+    description:
+      "Discover Sri Lanka’s ancient capitals, sacred temples and authentic village life.",
+    price: "USD 930 per person",
+  },
+  {
+    id: 3,
+    image: `${process.env.PUBLIC_URL}/images/Tours/Calvera%20pakage/Calvera%20Wild/henning-borgersen-Kr_RijTa0kg-unsplash.jpg`,
+    title: "Calvera Wild Trails",
+    description:
+      "Thrilling wildlife safaris, scenic hikes and immersive nature experiences.",
+    price: "USD 1,560 per person",
+  },
+  {
+    id: 4,
+    image: `${process.env.PUBLIC_URL}/images/Tours/Calvera%20pakage/Calvera%20Coastal%20Bliss%20(Leisure%20&%20Beach%20Relaxation/costalbills1.jpg`,
+    title: "Calvera Coastal Bliss",
+    description:
+      "Relax on golden southern beaches with optional whale watching and coastal charm.",
+    price: "USD 860 per person",
+  },
+  {
+    id: 5,
+    image: `${process.env.PUBLIC_URL}/images/Tours/Calvera%20pakage/Calvera%20Signature/Signature.jpg`,
+    title: "Calvera Signature Journey",
+    description:
+      "Perfect balance of culture, tea country, safaris and beaches across Sri Lanka.",
+    price: "USD 1,760 per person",
+  },
+];
+
 
   return (
     <>

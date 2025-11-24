@@ -408,6 +408,24 @@ body {
   margin-bottom: 0;
 }
 
+.full-width {
+  width: 100%;
+  padding: 80px 0 40px;
+}
+
+/* This wrapper replaces the container for full width scrolling */
+.tour-wrapper {
+  width: 100%;
+  padding: 0 30px;
+}
+
+/* Make scroll area use entire page width */
+.tour-grid {
+  width: 100%;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
 .tour-section-title {
   text-align: center;
   font-size: 2.4rem;

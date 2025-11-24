@@ -184,8 +184,8 @@ const Home = () => {
       </Fade>
 
       {/* =========== TOUR PACKAGES ROW (scrollable) =========== */}
-      <section className="tour-scroll-bar">
-        <div className="container">
+    <section className="tour-scroll-bar full-width">
+        <div className="tour-wrapper">
           <h2 className="tour-section-title">Featured Tour Packages</h2>
           <p className="tour-section-subtitle">
             Handpicked experiences crafted just for you.

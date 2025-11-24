@@ -279,7 +279,7 @@ body {
 .sri-lanka-content h3 {
   font-size: 2rem;
   font-weight: 700;
-  color: var(--champagne); /* fixed from undefined --golden-sand */
+  color: var(--champagne);
   margin: 40px 0 20px;
   display: inline-block;
   padding-bottom: 12px;
@@ -394,7 +394,7 @@ body {
 }
 
 /* =========================================== */
-/* 4. TOUR PACKAGES GRID - LUXURY CENTERED     */
+/* 4. TOUR PACKAGES - HORIZONTAL SCROLL ROW    */
 /* =========================================== */
 
 .tour-scroll-bar {
@@ -404,7 +404,6 @@ body {
   margin: 0;
 }
 
-/* make sure there is no stray gap below this section */
 .tour-scroll-bar:last-of-type {
   margin-bottom: 0;
 }
@@ -415,34 +414,50 @@ body {
   font-weight: 900;
   text-transform: uppercase;
   letter-spacing: -0.5px;
-  color: var(--merino); /* light text */
+  color: var(--merino);
   margin-bottom: 10px;
 }
 
 .tour-section-subtitle {
   text-align: center;
   font-size: 1.05rem;
-  color: rgba(246, 234, 211, 0.85); /* softer light */
+  color: rgba(246, 234, 211, 0.85);
   margin-bottom: 40px;
 }
 
-/* Grid wrapper */
+/* Horizontal scroll container */
 .tour-grid {
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+  display: flex;
+  flex-wrap: nowrap;      /* all cards in one row */
   gap: 30px;
-  justify-items: center;
+  overflow-x: auto;       /* scrollable */
+  padding-bottom: 12px;
+  scroll-snap-type: x mandatory;
 }
 
-/* Make links not mess with card styling */
+/* scrollbar styling (optional but nice) */
+.tour-grid::-webkit-scrollbar {
+  height: 8px;
+}
+.tour-grid::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.05);
+}
+.tour-grid::-webkit-scrollbar-thumb {
+  background: linear-gradient(90deg, #ea8f32, #ffb56e);
+  border-radius: 999px;
+}
+
+/* Each link/card behaves like a slide */
 .tour-card-link {
   text-decoration: none;
   color: inherit;
-  width: 100%;
-  max-width: 360px;
+  flex: 0 0 auto;         /* don't shrink, stay side-by-side */
+  width: 340px;
+  max-width: 340px;
+  scroll-snap-align: center;
 }
 
-/* Card styles (reusing your luxury style) */
+/* Card styles */
 .tour-card {
   width: 100%;
   background: rgba(26, 50, 56, 0.9);
@@ -530,25 +545,6 @@ body {
     inset 0 1px 0 rgba(255, 255, 255, 0.4);
 }
 
-/* === Responsive grid === */
-@media (max-width: 1200px) {
-  .tour-grid {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-  }
-}
-
-@media (max-width: 900px) {
-  .tour-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-}
-
-@media (max-width: 600px) {
-  .tour-grid {
-    grid-template-columns: 1fr;
-  }
-}
-
 /* =========================================== */
 /* 5. RESPONSIVENESS                           */
 /* =========================================== */
@@ -562,9 +558,6 @@ body {
   }
   .discover-wonders-content h2 {
     font-size: 2.5rem;
-  }
-  .tour-card {
-    width: 320px;
   }
 }
 
@@ -589,8 +582,9 @@ body {
     font-size: 2rem;
   }
 
-  .tour-card {
+  .tour-card-link {
     width: 300px;
+    max-width: 300px;
   }
 }
 
@@ -605,8 +599,9 @@ body {
     padding: 25px 20px;
   }
 
-  .tour-card {
+  .tour-card-link {
     width: 280px;
+    max-width: 280px;
   }
   .tour-info h4 {
     font-size: 1.4rem;

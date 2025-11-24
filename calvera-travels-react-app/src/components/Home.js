@@ -5,16 +5,7 @@ import { Fade } from "react-awesome-reveal";
 import Hero from "./Hero";
 import "./Home.css";
 
-function slugify(text = "") {
-  return text
-    .toLowerCase()
-    .trim()
-    .replace(/[^\w\s-]/g, "")
-    .replace(/\s+/g, "-");
-}
-
-const Home = () => {
-  // === Tour packages (same data, no scroll stuff needed) ===
+// Simple list used in the horizontal scroll section
 const scrollBarTourPackages = [
   {
     id: 1,
@@ -58,7 +49,7 @@ const scrollBarTourPackages = [
   },
 ];
 
-
+const Home = () => {
   return (
     <>
       <SEO
@@ -192,7 +183,7 @@ const scrollBarTourPackages = [
         </section>
       </Fade>
 
-      {/* =========== TOUR PACKAGES GRID (centered) =========== */}
+      {/* =========== TOUR PACKAGES ROW (scrollable) =========== */}
       <section className="tour-scroll-bar">
         <div className="container">
           <h2 className="tour-section-title">Featured Tour Packages</h2>
@@ -201,35 +192,32 @@ const scrollBarTourPackages = [
           </p>
 
           <div className="tour-grid">
-            {scrollBarTourPackages.map((tour) => {
-              const slug = slugify(tour.title);
-              return (
-                <Link
-                  key={tour.id}
-                  to={`/tours#${slug}`}
-                  className="tour-card-link"
-                >
-                  <div className="tour-card">
-                    <img
-                      src={tour.image}
-                      alt={tour.title}
-                      onError={(e) => {
-                        e.currentTarget.src = `${process.env.PUBLIC_URL}/images/placeholder.jpg`;
-                        // eslint-disable-next-line no-console
-                        console.error(`Failed to load: ${tour.image}`);
-                      }}
-                      loading="lazy"
-                      decoding="async"
-                    />
-                    <div className="tour-info">
-                      <h4>{tour.title}</h4>
-                      <p>{tour.description}</p>
-                      <span className="price">{tour.price}</span>
-                    </div>
+            {scrollBarTourPackages.map((tour) => (
+              <Link
+                key={tour.id}
+                to="/tours" // or `/tours#something` later if you add anchors
+                className="tour-card-link"
+              >
+                <div className="tour-card">
+                  <img
+                    src={tour.image}
+                    alt={tour.title}
+                    onError={(e) => {
+                      e.currentTarget.src = `${process.env.PUBLIC_URL}/images/placeholder.jpg`;
+                      // eslint-disable-next-line no-console
+                      console.error(`Failed to load: ${tour.image}`);
+                    }}
+                    loading="lazy"
+                    decoding="async"
+                  />
+                  <div className="tour-info">
+                    <h4>{tour.title}</h4>
+                    <p>{tour.description}</p>
+                    <span className="price">{tour.price}</span>
                   </div>
-                </Link>
-              );
-            })}
+                </div>
+              </Link>
+            ))}
           </div>
         </div>
       </section>

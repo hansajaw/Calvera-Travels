@@ -30,10 +30,11 @@
   background: var(--pale-peach);
 }
 
+/* ===== Container (less side space, wider content) ===== */
 .container {
-  max-width: 1200px;
+  max-width: 1400px;   /* wider so cards use more width */
   margin: 0 auto;
-  padding: 0 20px;
+  padding: 0 10px;     /* reduced side padding */
 }
 
 /* ===== Toolbar ===== */
@@ -153,13 +154,14 @@
   border-color: var(--accent-orange);
 }
 
-/* ===== Cards ===== */
+/* ===== Cards Grid (4 per row on desktop) ===== */
 .destinations-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  grid-template-columns: repeat(4, 1fr); /* 4 destinations per row */
   gap: 24px;
 }
 
+/* ===== Card ===== */
 .destination-card {
   background: var(--white);
   border-radius: var(--radius-lg);
@@ -233,11 +235,26 @@
 }
 
 /* ===== Responsive ===== */
+@media (max-width: 1200px) {
+  .destinations-grid {
+    grid-template-columns: repeat(3, 1fr); /* 3 per row */
+  }
+}
+
+@media (max-width: 900px) {
+  .destinations-grid {
+    grid-template-columns: repeat(2, 1fr); /* 2 per row */
+  }
+}
+
 @media (max-width: 768px) {
   .toolbar {
     padding: 16px;
   }
+}
+
+@media (max-width: 600px) {
   .destinations-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr; /* 1 per row on phones */
   }
 }

@@ -24,7 +24,7 @@ export default function Destination() {
   const [activeFilter, setActiveFilter] = useState("all");
   const [search, setSearch] = useState("");
   const [sortBy, setSortBy] = useState("name");
-  const [viewMode] = useState("grid");
+  const [viewMode] = useState("grid"); // stays "grid"
   const [favorites, setFavorites] = useState([]);
 
   const regions = useMemo(() => {
@@ -95,85 +95,83 @@ export default function Destination() {
       />
 
       {/* ======= Main Section ======= */}
-<section id="destinations" className="destinations-section">
-  <div className="container">
-    {/* ===== FILTER & SEARCH TOOLBAR ===== */}
-    <div className="toolbar">
-      {/* ---- Filter Buttons ---- */}
-      <div className="filter-bar">
-        {regions.map((filter) => {
-          const label =
-            filter === "all"
-              ? "All Regions"
-              : filter.charAt(0).toUpperCase() + filter.slice(1);
-          return (
-            <button
-              key={filter}
-              className={`filter-btn ${
-                activeFilter === filter ? "active" : ""
-              }`}
-              onClick={() => setActiveFilter(filter)}
-            >
-              {label}
-            </button>
-          );
-        })}
-      </div>
+      <section id="destinations" className="destinations-section">
+        <div className="container">
+          {/* ===== FILTER & SEARCH TOOLBAR ===== */}
+          <div className="toolbar">
+            {/* ---- Filter Buttons ---- */}
+            <div className="filter-bar">
+              {regions.map((filter) => {
+                const label =
+                  filter === "all"
+                    ? "All Regions"
+                    : filter.charAt(0).toUpperCase() + filter.slice(1);
+                return (
+                  <button
+                    key={filter}
+                    className={`filter-btn ${
+                      activeFilter === filter ? "active" : ""
+                    }`}
+                    onClick={() => setActiveFilter(filter)}
+                  >
+                    {label}
+                  </button>
+                );
+              })}
+            </div>
 
-      {/* ---- Search & Sort Controls ---- */}
-      <div className="search-sort">
-        {/* Search Box */}
-        <div className="search-box">
-          <svg
-            className="search-icon"
-            width="18"
-            height="18"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2"
-          >
-            <circle cx="11" cy="11" r="8" />
-            <path d="M21 21l-4.35-4.35" />
-          </svg>
+            {/* ---- Search & Sort Controls ---- */}
+            <div className="search-sort">
+              {/* Search Box */}
+              <div className="search-box">
+                <svg
+                  className="search-icon"
+                  width="18"
+                  height="18"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                >
+                  <circle cx="11" cy="11" r="8" />
+                  <path d="M21 21l-4.35-4.35" />
+                </svg>
 
-          <input
-            type="search"
-            placeholder="Search destinations..."
-            value={search}
-            onChange={(e) => setSearch(e.target.value)}
-            className="search-input"
-            aria-label="Search destinations"
-          />
+                <input
+                  type="search"
+                  placeholder="Search destinations..."
+                  value={search}
+                  onChange={(e) => setSearch(e.target.value)}
+                  className="search-input"
+                  aria-label="Search destinations"
+                />
 
-          {search && (
-            <button
-              type="button"
-              className="clear-search"
-              onClick={() => setSearch("")}
-              aria-label="Clear search"
-            >
-              ✕
-            </button>
-          )}
-        </div>
+                {search && (
+                  <button
+                    type="button"
+                    className="clear-search"
+                    onClick={() => setSearch("")}
+                    aria-label="Clear search"
+                  >
+                    ✕
+                  </button>
+                )}
+              </div>
 
-        {/* Sort Dropdown */}
-        <select
-          value={sortBy}
-          onChange={(e) => setSortBy(e.target.value)}
-          className="sort-select"
-          aria-label="Sort destinations"
-        >
-          <option value="name">Sort by Name</option>
-          <option value="region">Sort by Region</option>
-        </select>
-      </div>
-    </div>
+              {/* Sort Dropdown */}
+              <select
+                value={sortBy}
+                onChange={(e) => setSortBy(e.target.value)}
+                className="sort-select"
+                aria-label="Sort destinations"
+              >
+                <option value="name">Sort by Name</option>
+                <option value="region">Sort by Region</option>
+              </select>
+            </div>
+          </div>
 
-
-
-          {/* Cards */}
+          {/* ===== Cards ===== */}
           <div className={`destinations-${viewMode}`}>
             {filtered.map((destination) => {
               const slug = destination.slug || slugify(destination.name);
@@ -200,9 +198,7 @@ export default function Destination() {
 
                   <div className="card-content">
                     <h3>{destination.name}</h3>
-                    <p className="card-tagline">
-                      {destination.tagline}
-                    </p>
+                    <p className="card-tagline">{destination.tagline}</p>
                   </div>
                 </Link>
               );

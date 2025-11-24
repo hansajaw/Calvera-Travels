@@ -291,12 +291,12 @@
     font-weight: 900;
     position: absolute;
     left: 0;
-    color: #ffa500;
+    color: #1e3234;
     font-size: 16px;
 }
 
 .whatwedo-content ul li strong {
-    color: #ffa500;
+    color: #2b3e4b;
     font-weight: 600;
 }
 
@@ -335,7 +335,7 @@
 .ourpromise-content h2 {
     font-size: 48px;
     font-weight: 700;
-    color: #fff;
+    color: #2b3e4b;
     margin-bottom: 25px;
     text-align: center;
 }
@@ -343,7 +343,7 @@
 .ourpromise-content > p {
     font-size: 18px;
     line-height: 1.8;
-    color: rgba(255, 255, 255, 0.95);
+    color: #2b3e4b(255, 255, 255, 0.95);
     margin-bottom: 30px;
     text-align: center;
 }
@@ -357,7 +357,7 @@
 .ourpromise-content ul li {
     font-size: 17px;
     line-height: 1.8;
-    color: rgba(255, 255, 255, 0.9);
+    color: #1e3234(255, 255, 255, 0.9);
     margin-bottom: 20px;
     padding-left: 35px;
     position: relative;
@@ -478,7 +478,7 @@
 .why-choose-content h2 {
     font-size: 48px;
     font-weight: 700;
-    color: #fff;
+    color: #2b3e4b;
     margin-bottom: 40px;
     text-align: center;
 }
@@ -492,7 +492,7 @@
 .why-choose-content ul li {
     font-size: 17px;
     line-height: 1.8;
-    color: rgba(255, 255, 255, 0.9);
+    color: rgba(0, 0, 0, 0.3);
     margin-bottom: 20px;
     padding-left: 35px;
     position: relative;
@@ -511,7 +511,7 @@
 .why-choose-content > p {
     font-size: 18px;
     line-height: 1.8;
-    color: rgba(255, 255, 255, 0.95);
+    color: rgba(0, 0, 0, 0.95);
     margin-top: 30px;
     text-align: center;
     font-weight: 500;

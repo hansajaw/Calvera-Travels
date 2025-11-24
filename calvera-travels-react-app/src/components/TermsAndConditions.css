@@ -8,6 +8,7 @@
     padding-bottom: 50px;
     max-width: 900px;
     margin: 0 auto;
+    background-color: #f5f5dc; /* Light Beige Background */
     font-family: 'Inter', sans-serif; /* Recommended font for modern web apps */
 }
 
@@ -19,7 +20,7 @@
 
 .terms-header h1 {
     color: #0056b3; /* Dark Blue */
-    border-bottom: 2px solid #0056b3;
+    border-bottom: 2px solid #2b3e4b; /* Darker Blue */
     padding-bottom: 10px;
 }
 

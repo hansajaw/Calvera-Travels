@@ -17,7 +17,7 @@ const Footer = () => {
                                 />
                                 <div className="logo-text">
                                     <h2>CALVERA</h2>
-                                    <span>TRAVELS</span>
+                                    <h2>TRAVELS</h2>
                                 </div>
                             </div>
                             <p className="tagline">

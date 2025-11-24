@@ -83,7 +83,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background: #5B3A29;
+    background: #e8c697;
     border-radius: 50%;
     color: #fff;              /* icon color */
     font-size: 18px;
@@ -92,8 +92,8 @@
 
 /* CHANGED: hover no longer blue — stays white */
 .social-icons a:hover {
-    background: #5B3A29;      /* keep same background (no blue) */
-    color: #FFFFFF;           /* keep icon white on hover */
+    background: #f5f5dc;      /* keep same background (no blue) */
+    color: #5b3a29;           /* keep icon white on hover */
     transform: translateY(-3px);
     box-shadow: 0 4px 12px rgba(255, 255, 255, 0.15);
 }

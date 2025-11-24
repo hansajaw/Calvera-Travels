@@ -204,7 +204,6 @@ const Home = () => {
                     alt={tour.title}
                     onError={(e) => {
                       e.currentTarget.src = `${process.env.PUBLIC_URL}/images/placeholder.jpg`;
-                      // eslint-disable-next-line no-console
                       console.error(`Failed to load: ${tour.image}`);
                     }}
                     loading="lazy"

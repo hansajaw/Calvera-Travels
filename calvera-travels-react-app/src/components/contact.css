@@ -2,12 +2,12 @@
    CALVERA CONTACT PAGE (Simple + Modal)
    ======================================== */
 
-/* Page */
+/* Page */S
 .contact-page {
-  background: linear-gradient(135deg, #0f1e24 0%, #1a3238 50%, #0f1e24 100%);
+  background:  #e8c697 ;
   min-height: 100vh;
   overflow-x: hidden;
-  color: #fff;
+  color: #0f1e24;
   padding-top: 100px;
 }
 
@@ -31,11 +31,11 @@
   margin: 14px 0 8px;
   font-size: clamp(28px, 4.5vw, 40px);
   font-weight: 800;
-  color: #fff;
+  color: #2b3e4b;
 }
 .contact-header p {
   margin: 0 auto;
-  color: #e2d8c6;
+  color: #2b3e4b;
   max-width: 700px;
   line-height: 1.6;
 }
@@ -106,7 +106,7 @@
 /* Form Section */
 .contact-form-section {
   padding: 36px 0 50px;
-  background: rgba(15, 30, 36, 0.5);
+  background: #e8c697;
 }
 .section-header {
   text-align: center;

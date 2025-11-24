@@ -7,7 +7,7 @@ export const DESTINATIONS = [
     short: "Sri Lanka’s sacred ancient capital filled with stupas, monasteries, and timeless spirituality.",
     image: "/images/Destinations/Anuradhapura/anuradhapura.jpg",
     images: [
-      "/images/Destinations/Anuradhapura/Isuru muniya.jpg",
+      "/images/Destinations/Anuradhapura/Isurumuniya.jpg",
       "/images/Destinations/Anuradhapura/Jaya Sri Mahabodiaya.jpg",
       "/images/Destinations/Anuradhapura/Ruwanwelisieya.jpg",
     ],
@@ -35,7 +35,7 @@ export const DESTINATIONS = [
       {
         id: "isurumuniya",
         title: "Isurumuniya",
-        image: "/images/destinations/Anuradhapura/Isuru muniya.jpg",
+        image: "/images/Destinations/Anuradhapura/Isurumuniya.jpg",
         short: "A serene rock temple known for its famous Lovers carving.",
         details:
           "Carved into solid rock and surrounded by a peaceful lotus pond, Isurumuniya Temple is famous for its exquisite stone carvings, including the celebrated “Isurumuniya Lovers.” The temple’s blend of artistry, spirituality, and natural beauty offers visitors a tranquil escape and a glimpse into the artistry of ancient Sri Lanka.",
@@ -610,7 +610,7 @@ export const DESTINATIONS = [
     short: "A surfer’s paradise with golden sands and laid-back charm.",
     image: "/images/Destinations/Arugambay/arugambay.jpg",
     images: [
-      "/images/Destinations/Arugambay/Elephant roc.jpg",
+      "/images/Destinations/Arugambay/Elephantrock.jpg",
       "/images/Destinations/Arugambay/Laggon safraii.jpg",
       "/images/Destinations/Arugambay/surf.jpg",
     ],
@@ -629,7 +629,7 @@ export const DESTINATIONS = [
       {
         id: "elephant-rock",
         title: "Elephant Rock",
-        image: "/images/Destinations/Arugambay/Elephant roc.jpg",
+        image: "/images/Destinations/Arugambay/Elephantrock.jpg",
         short: "A scenic cliff and viewpoint shaped like an elephant.",
         details:
           "Elephant Rock is a striking coastal formation near Arugam Bay, named for its resemblance to an elephant. It’s a popular spot for photography, relaxing by the sea, and enjoying panoramic views of the bay, especially at sunrise or sunset.",
@@ -809,7 +809,7 @@ export const DESTINATIONS = [
     slug: "jaffna-sri-lanka",
     region: "asia",
     short: "A northern cultural hub of temples, islands, and resilient heritage.",
-    image: "/images/Destinations/Jaffna/Jaffan a.jpg",
+    image: "/images/Destinations/Jaffna/Jaffana.jpg",
     images: [
       "/images/Destinations/Jaffna/Narrul KOvila.jpg",
       "/images/Destinations/Jaffna/Jaffna Fort.jpg",

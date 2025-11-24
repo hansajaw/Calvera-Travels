@@ -18,7 +18,6 @@ const tourPackages = [
         "Unwind on golden beaches under tropical sunsets",
       ],
       theme: "romantic",
-      // --- CHANGE IS HERE (Paths fixed from C:\... to relative) ---
       image:
         "/images/Tours/Calvera pakage/Calvera Honeymoon/Calvera Hoooneymoon.jpg",
       hoverImage:

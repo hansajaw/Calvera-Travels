@@ -1,12 +1,20 @@
-import React, { useRef, useState, useEffect } from "react";
+import React from "react";
 import SEO from "./SEO";
 import { Link } from "react-router-dom";
 import { Fade } from "react-awesome-reveal";
 import Hero from "./Hero";
 import "./Home.css";
 
+function slugify(text = "") {
+  return text
+    .toLowerCase()
+    .trim()
+    .replace(/[^\w\s-]/g, "")
+    .replace(/\s+/g, "-");
+}
+
 const Home = () => {
-  // === Tour packages with URL-encoded paths ===
+  // === Tour packages (same data, no scroll stuff needed) ===
   const scrollBarTourPackages = [
     {
       id: 1,
@@ -37,50 +45,6 @@ const Home = () => {
       price: "$1100",
     },
   ];
-
-  // === Manual carousel (no autoplay) ===
-  const scrollRef = useRef(null);
-  const cardRefs = useRef([]);
-  const [activeIndex, setActiveIndex] = useState(0);
-
-  const scrollToCard = (index) => {
-    if (scrollRef.current && cardRefs.current[index]) {
-      const card = cardRefs.current[index];
-      const container = scrollRef.current;
-      const left =
-        card.offsetLeft - container.offsetWidth / 2 + card.offsetWidth / 2;
-      container.scrollTo({ left, behavior: "smooth" });
-    }
-  };
-
-  const handleScroll = () => {
-    const container = scrollRef.current;
-    if (!container || cardRefs.current.length === 0) return;
-
-    const center = container.scrollLeft + container.offsetWidth / 2;
-    let closestIndex = 0;
-    let smallest = Infinity;
-
-    cardRefs.current.forEach((card, i) => {
-      if (!card) return;
-      const cardCenter = card.offsetLeft + card.offsetWidth / 2;
-      const diff = Math.abs(cardCenter - center);
-      if (diff < smallest) {
-        smallest = diff;
-        closestIndex = i;
-      }
-    });
-
-    setActiveIndex(closestIndex);
-  };
-
-  // Center the first card on mount (one-time). This is not autoplay.
-  useEffect(() => {
-    if (scrollRef.current && cardRefs.current[0]) {
-      scrollToCard(0);
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
 
   return (
     <>
@@ -215,36 +179,47 @@ const Home = () => {
         </section>
       </Fade>
 
-      {/* =========== TOUR PACKAGES CAROUSEL (manual scroll) =========== */}
-      <div className="tour-scroll-bar">
-        <div className="scroll-content" ref={scrollRef} onScroll={handleScroll}>
-          {scrollBarTourPackages.map((tour, index) => (
-            <div
-              key={tour.id}
-              className={`tour-card ${activeIndex === index ? "active" : ""}`}
-              ref={(el) => (cardRefs.current[index] = el)}
-              onClick={() => scrollToCard(index)}
-            >
-              <img
-                src={tour.image}
-                alt={tour.title}
-                onError={(e) => {
-                  e.currentTarget.src = `${process.env.PUBLIC_URL}/images/placeholder.jpg`;
-                  // eslint-disable-next-line no-console
-                  console.error(`Failed to load: ${tour.image}`);
-                }}
-                loading="lazy"
-                decoding="async"
-              />
-              <div className="tour-info">
-                <h4>{tour.title}</h4>
-                <p>{tour.description}</p>
-                <span className="price">{tour.price}</span>
-              </div>
-            </div>
-          ))}
+      {/* =========== TOUR PACKAGES GRID (centered) =========== */}
+      <section className="tour-scroll-bar">
+        <div className="container">
+          <h2 className="tour-section-title">Featured Tour Packages</h2>
+          <p className="tour-section-subtitle">
+            Handpicked experiences crafted just for you.
+          </p>
+
+          <div className="tour-grid">
+            {scrollBarTourPackages.map((tour) => {
+              const slug = slugify(tour.title);
+              return (
+                <Link
+                  key={tour.id}
+                  to={`/tours#${slug}`}
+                  className="tour-card-link"
+                >
+                  <div className="tour-card">
+                    <img
+                      src={tour.image}
+                      alt={tour.title}
+                      onError={(e) => {
+                        e.currentTarget.src = `${process.env.PUBLIC_URL}/images/placeholder.jpg`;
+                        // eslint-disable-next-line no-console
+                        console.error(`Failed to load: ${tour.image}`);
+                      }}
+                      loading="lazy"
+                      decoding="async"
+                    />
+                    <div className="tour-info">
+                      <h4>{tour.title}</h4>
+                      <p>{tour.description}</p>
+                      <span className="price">{tour.price}</span>
+                    </div>
+                  </div>
+                </Link>
+              );
+            })}
+          </div>
         </div>
-      </div>
+      </section>
     </>
   );
 };

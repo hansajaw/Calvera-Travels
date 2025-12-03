@@ -44,9 +44,9 @@ body {
 .section-title {
   font-size: clamp(1.8rem, 3.5vw, 2.4rem);
   font-weight: 800;
-  color: var(--teal);
   text-align: center;
   margin: 0 0 28px;
+  color:#2b3e4b;
 }
 
 /* ===========================
@@ -241,7 +241,7 @@ body {
   margin: 28px auto 0;
   display: block;
   padding: 14px 20px;
-  background: var(--teal);
+  background: #eb9438;
   color: #fff;
   font-size: 1rem;
   font-weight: 800;

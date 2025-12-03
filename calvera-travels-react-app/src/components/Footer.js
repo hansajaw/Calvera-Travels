@@ -15,10 +15,11 @@ const Footer = () => {
                                     alt="Calvera Travels Logo" 
                                     className="logo-img" 
                                 />
-                                <div className="logo-text">
-                                    <h2>CALVERA</h2>
-                                    <h2>TRAVELS</h2>
+                               <div className="logo-text">
+                                        <h2>CALVERA</h2>
+                                        <h2>TRAVELS</h2>
                                 </div>
+
                             </div>
                             <p className="tagline">
                                 Jobs fill your pocket, but adventures fill your soul.
@@ -71,11 +72,10 @@ const Footer = () => {
                         <ul>
                             <li><Link to="/privacy-policy"><i className="fas fa-angle-right"></i>Privacy Policy</Link></li>
                             <li><Link to="/terms-and-condition"><i className="fas fa-angle-right"></i>Terms & Conditions</Link></li>
-                            <li><Link to="/qa"><i className="fas fa-angle-right"></i>FAQ</Link></li>
                         </ul>
                     </div>
 
-                    <div className="footer-section contact">
+                    <div className="footer-section links">
                         <h3>
                             <i className="fas fa-envelope-open-text"></i>
                             Get in Touch
@@ -83,15 +83,23 @@ const Footer = () => {
                         <ul>
                             <li>
                                 <i className="fas fa-map-marker-alt"></i>
-                                <span>Colombo, Sri Lanka</span>
+                                <a
+                                    href="https://www.google.com/maps/place/Colombo,+Sri+Lanka"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                >
+                                    Colombo, Sri Lanka
+                                </a>
                             </li>
                             <li>
                                 <i className="fas fa-phone"></i>
-                                <span>+94 76 191 5100</span>
+                                <a href="tel:+94761915100">+94 76 191 5100</a>
                             </li>
                             <li>
                                 <i className="fas fa-envelope"></i>
-                                <span>inquiries@calveratravels.com</span>
+                                <a href="mailto:inquiries@calveratravels.com">
+                                    inquiries@calveratravels.com
+                                </a>
                             </li>
                         </ul>
                     </div>

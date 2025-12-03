@@ -69,13 +69,30 @@ const Contact = () => {
       document.removeEventListener("keydown", onEsc);
     };
   }, [isModalOpen]);
+const contactInfo = [
+  {
+    icon: "fa-map-marker-alt",
+    title: "Visit Us",
+    lines: ["508/A, Prithika Mawatha, Pitipana North, Homagama."],
+  },
+  {
+    icon: "fa-phone-alt",
+    title: "Call Us",
+    lines: ["+94 76 191 5100"],
+  },
+  {
+    icon: "fa-envelope",
+    title: "Email Us",
+    lines: ["inquiries@calveratravels.com"],
+  },
+  {
+    icon: "fa-clock",
+    title: "Working Hours",
+    lines: ["24/7"],
+  },
+];
 
-  const contactInfo = [
-    { icon: "fa-map-marker-alt", title: "Visit Us", lines: ["508/A, Prithika Mawatha, Pitipana North, Homagama."] },
-    { icon: "fa-phone-alt", title: "Call Us", lines: ["+94 76 191 5100"] },
-    { icon: "fa-envelope", title: "Email Us", lines: ["inquiries@calveratravels.com"] },
-    { icon: "fa-clock", title: "Working Hours", lines: ["24/7"] },
-  ];
+
 
   return (
     <div className="contact-page">

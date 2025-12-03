@@ -140,6 +140,14 @@ export default function Header() {
                   Blog
                 </Link>
               </li>
+              <li>
+                <Link
+                  to="/Contact"
+                  className={navIsActive("/Contact") ? "active" : ""}
+                >
+                  Contact
+                </Link>
+              </li>
             </ul>
 
             {/* Actions */}

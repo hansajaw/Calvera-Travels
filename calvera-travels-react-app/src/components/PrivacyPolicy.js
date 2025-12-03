@@ -44,7 +44,7 @@ const PrivacyPolicy = () => {
                 <p>
                     You can request to update or delete your data anytime by contacting us at{' '}
                     <a href="mailto:info@calveratravels.com" className="privacy-email-link">
-                        info@calveratravels.com
+                        inquiries@calveratravels.com
                     </a>.
                 </p>
 

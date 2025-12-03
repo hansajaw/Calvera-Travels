@@ -174,19 +174,22 @@ const PackagePopup = ({ pkg, onClose, onReceiveNow }) => {
             </ul>
           </div>
 
-          <div className="popup-buttons">
-            <button className="btn-primary" onClick={onReceiveNow}>
-              <i className="fas fa-calendar-check"></i> Receive Now
-            </button>
-            <button className="btn-secondary" onClick={onClose}>
-              <i className="fas fa-arrow-left"></i> Back to Tours
-            </button>
-          </div>
+       <div className="popup-buttons">
+  <button className="btn-primary" onClick={onReceiveNow}>
+    Receive Now
+  </button>
+  <button className="btn-secondary" onClick={onClose}>
+    <i className="fas fa-arrow-left"></i> Back to Tours
+  </button>
+</div>
+
         </div>
       </div>
     </div>
   );
 };
+
+
 
 const Tours = () => {
   const [selectedPackage, setSelectedPackage] = useState(null);
@@ -366,33 +369,37 @@ const Tours = () => {
         showScrollIndicator
       />
 
-      <section id="packages" className="packages-section">
-        <div className="container">
-          <h2 className="section-title">Our Tour Packages</h2>
+  <section id="packages" className="packages-section">
+    <div className="container">
+      <h2 className="section-title">
+        <span className="section-kicker"></span>
+        Our Tour Packages
+      </h2>
+      
 
-          <div className="packages-grid">
-            {packages.map((pkg) => (
-              <div key={pkg.id} className={`package-card ${pkg.theme}`}>
-                <div className="image-wrapper">
-                  <img src={pkg.image} alt={pkg.imageAlt} className="card-image-main" />
-                  <span className="package-tag">{pkg.title.split(" ")[1]}</span>
-                </div>
+      <div className="packages-grid">
+        {packages.map((pkg) => (
+          <div key={pkg.id} className={`package-card ${pkg.theme}`}>
+            <div className="image-wrapper">
+              <img src={pkg.image} alt={pkg.imageAlt} className="card-image-main" />
+              <span className="package-tag">{pkg.title.split(" ")[1]}</span>
+            </div>
 
-                <div className="package-info">
-                  <h3>{pkg.title}</h3>
-                  <p>{pkg.summary.slice(0, 120)}...</p>
-                  <p className="duration">
-                    <i className="far fa-clock"></i> {pkg.duration}
-                  </p>
-                  <button className="btn-view" onClick={() => openSummary(pkg)}>
-                    <i className="fas fa-eye"></i> View Summary
-                  </button>
-                </div>
-              </div>
-            ))}
+            <div className="package-info">
+              <h3>{pkg.title}</h3>
+              <p>{pkg.summary.slice(0, 120)}...</p>
+              <p className="duration">
+                <i className="far fa-clock"></i> {pkg.duration}
+              </p>
+              <button className="btn-view" onClick={() => openSummary(pkg)}>
+                <i className="fas fa-eye"></i> View Summary
+              </button>
+            </div>
           </div>
-        </div>
-      </section>
+        ))}
+      </div>
+    </div>
+  </section>
 
       {showPackagePopup && (
         <PackagePopup pkg={selectedPackage} onClose={closeSummary} onReceiveNow={receiveNow} />

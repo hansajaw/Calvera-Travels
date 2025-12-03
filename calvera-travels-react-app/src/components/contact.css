@@ -65,7 +65,7 @@
   gap: 26px;
 }
 .info-card {
-  background: rgba(26, 50, 56, 0.45);
+  background: #e8c697;
   backdrop-filter: blur(18px);
   border-radius: 18px;
   padding: 32px 26px;
@@ -86,7 +86,7 @@
   border-radius: 50%;
   display: grid;
   place-items: center;
-  background: linear-gradient(135deg, #ea8f32, #d67820);
+  background: linear-gradient(135deg, #ffd8a6);
   box-shadow: 0 8px 24px rgba(234, 143, 50, 0.35);
 }
 .info-icon i {
@@ -97,16 +97,17 @@
   font-size: 1.3rem;
   font-weight: 800;
   margin: 4px 0 10px;
+  color: #2b3e4b
 }
 .info-card p {
   margin: 6px 0;
-  color: #f1e8d8;
+  color: #5b3a29;
 }
 
 /* Form Section */
 .contact-form-section {
   padding: 36px 0 50px;
-  background: #e8c697;
+  background: #f5f5dc;
 }
 .section-header {
   text-align: center;
@@ -121,14 +122,14 @@
 }
 .section-subtitle {
   font-size: 1.05rem;
-  color: #e2d8c6;
+  color: #1e3234;
   margin: 0;
 }
 
 .form-container {
   max-width: 900px;
   margin: 0 auto;
-  background: rgba(26, 50, 56, 0.6);
+  background: #f5f5dc;
   backdrop-filter: blur(18px);
   border-radius: 18px;
   padding: 30px;
@@ -173,7 +174,7 @@
 }
 .form-group input:focus,
 .form-group textarea:focus {
-  border-color: #ea8f32;
+  border-color: #e89a38;
   box-shadow: 0 0 16px rgba(234, 143, 50, 0.28);
   background: rgba(255, 255, 255, 0.12);
 }
@@ -183,20 +184,20 @@
 }
 
 .error-text {
-  color: #ff6b6b;
+  color: #1e3234;
   font-size: 0.85rem;
   font-weight: 600;
   margin-top: -2px;
 }
 input.error,
 textarea.error {
-  border-color: #ff6b6b !important;
+  border-color: #e89a38 !important;
   box-shadow: 0 0 10px rgba(255, 107, 107, 0.25) !important;
 }
 
 .btn-submit {
   padding: 16px 28px;
-  background: linear-gradient(135deg, #ea8f32, #d67820);
+  background: linear-gradient(135deg, #ffd8a6, #e89a38);
   color: #0f1e24;
   border: none;
   border-radius: 12px;
@@ -240,7 +241,7 @@ textarea.error {
 .social-section {
   padding: 50px 0 70px;
   text-align: center;
-  background: rgba(15, 30, 36, 0.6);
+  background: #f5f5dc;
 }
 .social-section h2 {
   font-size: 2rem;
@@ -249,7 +250,7 @@ textarea.error {
 }
 .social-section p {
   font-size: 1.05rem;
-  color: #e2d8c6;
+  color: #2b3e4b;
   margin: 0 0 20px;
 }
 .social-links {
@@ -379,4 +380,24 @@ textarea.error {
 @media (max-width: 480px) {
   .social-icon { width: 50px; height: 50px; font-size: 1.2rem; }
   .btn-submit { width: 100%; }
+}
+.info-grid {
+  display: grid;
+  gap: 26px;
+  /* large screens: 4 in a row */
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+/* medium screens: 2 per row (pairs) */
+@media (max-width: 1024px) {
+  .info-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+/* small screens: 1 per row */
+@media (max-width: 600px) {
+  .info-grid {
+    grid-template-columns: 1fr;
+  }
 }

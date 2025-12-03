@@ -43,22 +43,15 @@
 
 /* CHANGED: CALVERA text -> white */
 .logo-text h2 {
-    font-size: 28px;
-    font-weight: 700;
-    color: #FFFFFF;           /* was #D4A574 */
-    margin: 0;
-    letter-spacing: 1px;
-    text-transform: uppercase;
+  font-size: clamp(22px, 3vw, 28px);
+  font-weight: 700;
+  color: #ffffff;
+  margin: 0;
+  letter-spacing: 1px;
+  text-transform: uppercase;
 }
 
-.logo-text span {
-    font-size: 14px;
-    color: #FFF;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    font-weight: 500;
-    display: block;
-}
+
 
 .tagline {
     font-size: 14px;
@@ -97,18 +90,24 @@
     transform: translateY(-3px);
     box-shadow: 0 4px 12px rgba(255, 255, 255, 0.15);
 }
-
+/* default footer headings (About, Quick Links, Get in Touch, etc.) */
 .footer-section h3 {
     font-size: 18px;
     font-weight: 700;
     margin-bottom: 20px;
-    color: #FFFFFF;           /* CHANGED: force headings to white */
+    color: #FFFFFF;           /* headings white by default */
     position: relative;
     padding-bottom: 10px;
     display: flex;
     align-items: center;
     gap: 8px;
 }
+
+/* ONLY the Navigation heading */
+.footer-section.links h3 {
+    color: #fff;           /* Navigation title in black */
+}
+
 
 .footer-section h3::after {
     content: '';
@@ -160,13 +159,14 @@
     color: #FFF;
 }
 
-.footer-section.contact ul {
+
+.footer-section.footer-section.links ul {
     list-style: none;
     padding: 0;
     margin: 0;
 }
 
-.footer-section.contact ul li {
+.footer-section.footer-section.footer-section.links ul li {
     display: flex;
     align-items: flex-start;
     gap: 12px;
@@ -186,6 +186,24 @@
 .footer-section.contact ul li span {
     flex: 1;
 }
+.footer-section.contact ul li a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.footer-section.contact ul li a:hover {
+  text-decoration: underline;
+}
+.footer-section.contact ul li a {
+  flex: 1;              /* make the whole text area clickable */
+  color: inherit;       /* same color as the li text (#a8c5d6) */
+  text-decoration: none;
+}
+
+.footer-section.contact ul li a:hover {
+  text-decoration: underline;
+}
+
 
 .footer-bottom {
     display: flex;

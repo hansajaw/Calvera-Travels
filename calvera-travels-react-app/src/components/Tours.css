@@ -4,7 +4,7 @@
 
 /* === PAGE === */
 .tours-page {
-  background: linear-gradient(135deg, #e8c697 0%, #ea8f32 100%);
+  background: #F5F5DC;
   min-height: 100vh;
   position: relative;
   overflow-x: hidden;
@@ -39,24 +39,54 @@ body:not(.popup-active) header {
 /* === SECTION TITLE === */
 .section-title {
   text-align: center;
-  font-size: 3.5rem;
+  font-size: clamp(2.4rem, 4vw, 3.5rem);
   font-weight: 700;
-  color: 2b3e4b;
-  margin-bottom: 80px;
+  color: #2b3e4b;           /* your requested color */
+  margin-bottom: 16px;
   letter-spacing: -1px;
   text-transform: uppercase;
   position: relative;
 }
+
+/* small label above heading */
+.section-kicker {
+  display: block;
+  font-size: 0.9rem;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: #e89a38;
+  margin-bottom: 6px;
+}
+
+/* underline accent */
 .section-title::after {
   content: "";
   position: absolute;
   bottom: -20px;
   left: 50%;
   transform: translateX(-50%);
-  width: 100px;
+  width: 110px;
   height: 4px;
   background: linear-gradient(90deg, transparent, #5b3a29, transparent);
   border-radius: 2px;
+}
+
+/* centered subtitle under the title */
+.section-subtitle {
+  max-width: 720px;
+  margin: 32px auto 70px;
+  text-align: center;
+  font-size: 1rem;
+  line-height: 1.7;
+  color: rgba(43, 62, 75, 0.85); /* softer #2b3e4b */
+}
+
+/* make sure the whole section feels centered on the page */
+.packages-section {
+  padding: 120px 0;
+  position: relative;
+  z-index: 2;
+  background: #F5F5DC; /* matches your page background */
 }
 
 /* === GRID === */
@@ -68,13 +98,13 @@ body:not(.popup-active) header {
 
 /* === CARD === */
 .package-card {
-  background: rgba(197, 190, 161, 0.08);
+  
   border-radius: 24px;
   overflow: hidden;
   border: 1px solid rgba(197, 190, 161, 0.15);
   transition: all 0.35s ease;
   position: relative;
-  background-color: #F5F5DC;
+  background-color: #ffd8a6;
 }
 .package-card:hover {
   transform: translateY(-10px);
@@ -126,10 +156,10 @@ body:not(.popup-active) header {
   transition: color 0.3s ease;
 }
 .package-card:hover .package-info h3 {
-  color: #ea8f32;
+  color: #e89a38;
 }
 .package-info > p {
-  color: #1e3234;
+  color: #2b3e4b;
   line-height: 1.7;
   margin-bottom: 20px;
   font-size: 1rem;
@@ -151,7 +181,7 @@ body:not(.popup-active) header {
 .btn-view {
   width: 100%;
   padding: 16px;
-  background: linear-gradient(135deg, #ea8f32, #d67820);
+  background: linear-gradient(135deg, #ffd8a6, #e89a38);
   color: #22404a;
   border: none;
   border-radius: 12px;
@@ -180,7 +210,8 @@ body:not(.popup-active) header {
   align-items: center;
   justify-content: center;
   padding: 40px;
-  background: rgba(248,240,21 0.96);
+  /* fixed: use F5F5DC palette with valid rgba */
+  background: rgba(245, 245, 220, 0.96);
   backdrop-filter: blur(10px);
   overflow-y: auto;
 }
@@ -313,7 +344,8 @@ body:not(.popup-active) header {
   gap: 14px;
 }
 .popup-details li {
-  background: rgba(248,240,21 0.1);
+  /* fixed: use F5F5DC tone instead of yellow + invalid rgba */
+  background: rgba(245, 245, 220, 0.6);
   padding: 12px 20px;
   border-left: 4px solid #ea8f32;
   border-radius: 10px;
@@ -443,10 +475,11 @@ body:not(.popup-active) header {
   grid-template-columns: 1fr 1fr;
   gap: 20px;
   margin-top: 8px;
+  color: #2b3e4b;
 }
 
-.btn-primary,
-.btn-secondary {
+.popup-buttons .btn-primary,
+.popup-buttons .btn-secondary {
   padding: 16px;
   border-radius: 12px;
   font-weight: 800;
@@ -461,14 +494,33 @@ body:not(.popup-active) header {
   gap: 8px;
 }
 
+/* FORCE brand orange on primary */
+.popup-buttons .btn-primary {
+  background: #e89a38 !important;
+  background-image: none !important;
+  border-color: #e89a38 !important;
+  color: #ffffff !important;
+}
+
+/* Outline style for secondary */
+.popup-buttons .btn-secondary {
+  background: transparent !important;
+  border: 2px solid #e89a38 !important;
+  color: #e89a38 !important;
+}
+
+
+
+/* PRIMARY – solid brand orange */
 .btn-primary {
-  background: linear-gradient(135deg, #2b3e4b, #1e3234);
-  color: #1c2f35;
+  background: #e89a38;
+  color: #2b3e4b;              /* dark text for contrast */
+  box-shadow: 0 8px 18px rgba(232, 154, 56, 0.45);
 }
 
 .btn-primary:hover:not(:disabled) {
   transform: translateY(-2px);
-  box-shadow: 0 8px 22px rgba(234,143,50,0.5);
+  box-shadow: 0 10px 24px rgba(232, 154, 56, 0.6);
 }
 
 .btn-primary:disabled {
@@ -476,17 +528,29 @@ body:not(.popup-active) header {
   cursor: not-allowed;
 }
 
+/* SECONDARY – soft outline button */
 .btn-secondary {
   background: transparent;
-  border: 2px solid rgba(197,190,161,0.35);
-  color: #f6ead3;
+  border: 2px solid rgba(232, 154, 56, 0.5);
+  color: #e89a38;
 }
 
 .btn-secondary:hover {
-  background: rgba(197,190,161,0.12);
-  color: #ffffff;
-  border-color: rgba(197,190,161,0.5);
+  background: rgba(232, 154, 56, 0.08);
+  border-color: #e89a38;
+  color: #e89a38;
 }
+
+/* Mobile: stack buttons */
+@media (max-width: 768px) {
+  .popup-buttons {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+}
+
+
+
 
 /* ========= RESPONSIVE ========= */
 @media (max-width: 768px) {

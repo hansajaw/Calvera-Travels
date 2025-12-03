@@ -62,13 +62,10 @@ const CTA = () => {
       <div className="cta-content">
         {!submitted ? (
           <>
-            <div className="cta-info-badge">
-              <i className="fas fa-star"></i>
-              <span>Your Adventure Begins with Us</span>
-            </div>
+            
 
             <h2>
-              Start Your <span>Dream Journey</span> Today
+              Start Your Dream Journey Today
             </h2>
             <p>
               Subscribe to our newsletter and get exclusive travel deals,

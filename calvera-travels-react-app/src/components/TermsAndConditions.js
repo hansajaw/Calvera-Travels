@@ -15,7 +15,7 @@ const TermsAndConditions = () => {
             </header>
 
             <section style={{marginBottom: '40px'}}>
-                <h2 style={sectionHeadingStyle}>7-1. Bookings & Payments</h2>
+                <h2 style={sectionHeadingStyle}>1. Bookings & Payments</h2>
                 <ul style={listStyle}>
                     <li>**Confirmation:** Bookings are confirmed upon payment of a deposit.</li>
                     <li>**Full Payment:** Full payment is due before the commencement of your tour.</li>
@@ -24,7 +24,7 @@ const TermsAndConditions = () => {
             </section>
 
             <section style={{marginBottom: '40px'}}>
-                <h2 style={sectionHeadingStyle}>7-2. Cancellations & Refunds</h2>
+                <h2 style={sectionHeadingStyle}> 2.Cancellations & Refunds</h2>
                 <p style={{marginBottom: '10px'}}>Our standard refund policy is as follows:</p>
                 <ul style={listStyle}>
                     <li>**30+ days before travel:** 90% refund</li>
@@ -37,45 +37,34 @@ const TermsAndConditions = () => {
             </section>
 
             <section style={{marginBottom: '40px'}}>
-                <h2 style={sectionHeadingStyle}>7-3. Liability Statement</h2>
+                <h2 style={sectionHeadingStyle}>3. Liability Statement</h2>
                 <p style={paragraphStyle}>
                     Calvera Travel acts solely as an **agent** between clients and service providers. We are not liable for delays, losses, or injuries caused by third-party suppliers (e.g., hotels, transportation companies) or events beyond our direct control.
                 </p>
             </section>
 
             <section style={{marginBottom: '40px'}}>
-                <h2 style={sectionHeadingStyle}>7-4. Client Responsibility</h2>
+                <h2 style={sectionHeadingStyle}>4. Client Responsibility</h2>
                 <p style={paragraphStyle}>
                     Travelers must ensure they possess **valid travel documents**, adhere to all local laws, and respect cultural and safety guidelines throughout their journey.
                 </p>
             </section>
 
             <section style={{marginBottom: '40px'}}>
-                <h2 style={sectionHeadingStyle}>7-5. Force Majeure</h2>
+                <h2 style={sectionHeadingStyle}>5. Force Majeure</h2>
                 <p style={paragraphStyle}>
                     We are not responsible for any cancellations, changes, or delays resulting from **Force Majeure** events, including but not limited to natural disasters, pandemics, strikes, or political unrest.
                 </p>
             </section>
 
             <section style={{marginBottom: '40px'}}>
-                <h2 style={sectionHeadingStyle}>7-6. Governing Law</h2>
+                <h2 style={sectionHeadingStyle}>6. Governing Law</h2>
                 <p style={paragraphStyle}>
                     These terms and conditions are governed by the laws of **Sri Lanka**. All disputes will be handled exclusively under the jurisdiction of Sri Lankan courts.
                 </p>
             </section>
             
-            <hr style={{margin: '50px 0', borderTop: '1px solid #ddd'}} />
-
-            {/* Added the Destinations section content here as a closing statement */}
-            <section style={{textAlign: 'center'}}>
-                <h2 style={sectionHeadingStyle}>8. Destinations: Discover Sri Lanka with Calvera Travel</h2>
-                <p style={{...paragraphStyle, fontStyle: 'italic', fontSize: '1.1em'}}>
-                    Every journey tells a story — and Sri Lanka has thousands to share.
-                </p>
-                <p style={paragraphStyle}>
-                    At Calvera Travel, we take you beyond the ordinary, guiding you through the island’s **vibrant cities, misty mountains, golden beaches, lush jungles, and ancient wonders.** Let us craft your perfect Sri Lankan adventure.
-                </p>
-            </section>
+        
         </div>
     );
 };

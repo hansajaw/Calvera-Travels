@@ -53,9 +53,7 @@ const CTA = () => {
   return (
     <section className="cta-section">
       {/* Decorative Elements */}
-      <div className="cta-decorative-circle circle-1"></div>
-      <div className="cta-decorative-circle circle-2"></div>
-      <div className="cta-decorative-circle circle-3"></div>
+     
 
       <div className="cta-background"></div>
 

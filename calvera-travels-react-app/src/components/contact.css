@@ -4,7 +4,7 @@
 
 /* Page */S
 .contact-page {
-  background:  #f5f5dc;
+  background:  #f5f5dc !important;
   min-height: 100vh;
   overflow-x: hidden;
   color: #0f1e24;
@@ -21,7 +21,7 @@
   font-size: 12px;
   letter-spacing: 1px;
   text-transform: uppercase;
-  background: rgba(234, 143, 50, 0.15);
+  background: rgba(#f5f5dc ) !important;
   border: 1px solid rgba(234, 143, 50, 0.4);
   color: #ffb56e;
   border-radius: 999px;

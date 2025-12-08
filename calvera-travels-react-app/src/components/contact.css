@@ -16,29 +16,49 @@
   padding: 48px 20px 18px;
   text-align: center;
 }
+
+/* badge – fix invalid background */
 .contact-header .badge {
   display: inline-block;
   font-size: 12px;
   letter-spacing: 1px;
   text-transform: uppercase;
-  background: rgba(#f5f5dc ) !important;
+  background: #f5f5dc;            /* fixed: was invalid rgba(#f5f5dc) */
   border: 1px solid rgba(234, 143, 50, 0.4);
   color: #ffb56e;
   border-radius: 999px;
   padding: 6px 12px;
 }
+
+/* remove the old h1 styling completely */
+.contact-header h1 {
+  display: none;
+}
+
+/* make the line of text act like the main heading */
+.contact-header p {
+  margin: 16px auto 0;
+  color: #2b3e4b;
+  max-width: 700px;
+  line-height: 1.6;
+  font-size: clamp(18px, 2.4vw, 22px);
+  font-weight: 600;
+}
+
 .contact-header h1 {
   margin: 14px 0 8px;
   font-size: clamp(28px, 4.5vw, 40px);
   font-weight: 800;
   color: #2b3e4b;
 }
+
 .contact-header p {
-  margin: 0 auto;
+  margin: 14px auto 0;  /* was: 0 auto; */
   color: #2b3e4b;
   max-width: 700px;
   line-height: 1.6;
 }
+
 .section-divider {
   width: 120px;
   height: 3px;

@@ -1,6 +1,11 @@
 // src/App.js
-import React from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import React, { useEffect } from "react";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  useLocation,
+} from "react-router-dom";
 
 import Layout from "./components/Layout";
 import Home from "./components/Home";
@@ -16,9 +21,27 @@ import TermsAndConditions from "./components/TermsAndConditions";
 import QA from "./components/QA";
 import "./App.css";
 
+/* ✅ ScrollToTop component inside App.js */
+const ScrollToTop = () => {
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    window.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: "smooth", // change to "auto" if you don't want animation
+    });
+  }, [pathname]);
+
+  return null;
+};
+
 function App() {
   return (
     <Router basename="/">
+      {/* ✅ This makes every route change start at the top */}
+      <ScrollToTop />
+
       <div className="App">
         <Layout>
           <main id="app-content" data-searchable="true" role="main">

@@ -104,7 +104,11 @@ const contactInfo = [
         image={`${process.env.PUBLIC_URL}/images/og-image-contact.jpg`}
         url="https://calveratravels.com/contact"
       />
-    
+     <header className="contact-header">
+        
+      
+      < div className="section-divider" />
+     </header>
 
 
       <section className="contact-info-section">
